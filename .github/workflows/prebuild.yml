@@ -1,0 +1,34 @@
+name: Ejecutar Prebuild y Commit
+
+on:
+  repository_dispatch:
+    types: [update_content]
+
+jobs:
+  prebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🔄 Clonar repositorio
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.TOKEN_GITHUB }}
+
+      - name: 🛠️ Instalar dependencias
+        run: npm install  # Si necesitas instalar paquetes
+
+      - name: ⚙️ Ejecutar Prebuild
+        run: npm run prebuild
+
+      - name: 📝 Comprobar cambios en Git
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "github-actions@github.com"
+
+          # Verificar si hay cambios
+          if [[ -n $(git status --porcelain) ]]; then
+            git add .
+            git commit -m "🚀 Auto-update after prebuild"
+            git push
+          else
+            echo "✅ No hay cambios para commitear."
+          fi
