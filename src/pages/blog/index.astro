@@ -1,0 +1,46 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
+import FormattedDate from '../../components/FormattedDate.astro';
+import { getPosts } from './[...slug].astro';
+import PostList from '../../components/PostList.astro';
+
+
+//Filtramos los ocultos y ordenamos por fecha de actualización o publicación
+const posts = (await getPosts()).filter((post)=>!post.data.hidden).sort((a,b)=>(b.data.updatedDate??b.data.pubDate).valueOf() - (a.data.updatedDate??a.data.pubDate).valueOf());
+
+
+---
+
+<!doctype html>
+<html lang="es">
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+	</head>
+	<body>
+		<Header />
+		<main>
+			<section>
+				<PostList posts={posts} />
+				<!-- <ul>
+					{
+						posts.map((post) => (
+							<li>
+								<a href={`/blog/${post.id}/`}>
+									<img width={720} height={360} src={post.data.heroImage} alt="" />
+									<h4 class="title">{post.data.title}</h4>
+									<p class="date">
+										<FormattedDate date={post.data.updatedDate ?? post.data.pubDate} />
+									</p>
+								</a>
+							</li>
+						))
+					}
+				</ul> -->
+			</section>
+		</main>
+		<Footer />
+	</body>
+</html>
