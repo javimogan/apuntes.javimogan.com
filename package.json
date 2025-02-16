@@ -6,7 +6,7 @@
     "sync:articles": "tsx scripts/syncArticles.ts",
     "prebuild": "npm run sync:articles",
     "dev": "astro dev",
-    "build": "npm run prebuild && astro build",
+    "build": "astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
