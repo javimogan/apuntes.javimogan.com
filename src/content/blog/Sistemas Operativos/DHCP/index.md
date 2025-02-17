@@ -5,7 +5,7 @@ description: >-
   Markdown content in Astro.
 updatedDate: '16/02/2025 03:51'
 pubDate: '16/02/2025 01:29'
-heroImage: /images/default/bg-4.jpg
+heroImage: /images/default/bg-1.jpg
 ---
 # _Configuración e instalación de un servidor DHCP y la odisea del servidor DNS._
 

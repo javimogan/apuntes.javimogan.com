@@ -1,69 +1,45 @@
 ---
 const today = new Date();
+import InstagramLogo from '../components/Logos/instagram.astro'
+import GitHubLogo from '../components/Logos/github.astro'
+import LinkeinLogo from '../components/Logos/linkedin.astro'
+
+export const _socialLinks = [
+	{
+		name: "GitHub",
+		url: "https://github.com/javimogan",
+		srOnly: "Ir al repositorio GitHub de javimogan",
+		icon: GitHubLogo,
+	},
+	{
+		name: "LinkedIn",
+		url: "https://www.linkedin.com/in/javimogan/",
+		srOnly: "Ir al perfil de LinkedIn de javimogan",
+		icon: LinkeinLogo,
+	},
+	{
+		name: "Instagram",
+		url: "https://instagram.com/javimogan",
+		srOnly: "Sigue a javimogan en Instagram",
+		icon: InstagramLogo,
+	},
+];
 ---
 
 <footer>
-	<!-- &copy;  -->
+	&copy; 
 	{today.getFullYear()} // javimogan
-	 <!-- // All rights reserved -->
+	<!-- // All rights reserved -->
 	<div class="social-links">
-		<!-- <a href="https://m.webtoo.ls/@astro" target="_blank">
-			<span class="sr-only">Follow Astro on Mastodon</span>
-			<svg
-				viewBox="0 0 16 16"
-				aria-hidden="true"
-				width="32"
-				height="32"
-				astro-icon="social/mastodon"
-				><path
-					fill="currentColor"
-					d="M11.19 12.195c2.016-.24 3.77-1.475 3.99-2.603.348-1.778.32-4.339.32-4.339 0-3.47-2.286-4.488-2.286-4.488C12.062.238 10.083.017 8.027 0h-.05C5.92.017 3.942.238 2.79.765c0 0-2.285 1.017-2.285 4.488l-.002.662c-.004.64-.007 1.35.011 2.091.083 3.394.626 6.74 3.78 7.57 1.454.383 2.703.463 3.709.408 1.823-.1 2.847-.647 2.847-.647l-.06-1.317s-1.303.41-2.767.36c-1.45-.05-2.98-.156-3.215-1.928a3.614 3.614 0 0 1-.033-.496s1.424.346 3.228.428c1.103.05 2.137-.064 3.188-.189zm1.613-2.47H11.13v-4.08c0-.859-.364-1.295-1.091-1.295-.804 0-1.207.517-1.207 1.541v2.233H7.168V5.89c0-1.024-.403-1.541-1.207-1.541-.727 0-1.091.436-1.091 1.296v4.079H3.197V5.522c0-.859.22-1.541.66-2.046.456-.505 1.052-.764 1.793-.764.856 0 1.504.328 1.933.983L8 4.39l.417-.695c.429-.655 1.077-.983 1.934-.983.74 0 1.336.259 1.791.764.442.505.661 1.187.661 2.046v4.203z"
-				></path></svg
+		{_socialLinks.map(({ name, url, icon:Icon, srOnly }) => (
+			<a href={url}
+				target="_blank"
+				rel="nofollow noreferrer noopener noindex"
 			>
-		</a> -->
-		<a
-			href="https://twitter.com/astrodotbuild"
-			target="_blank"
-			rel="nofollow noreferrer noopener noindex"
-		>
-			<span class="sr-only">Sigue a javimogan en Instagram</span>
-			<svg
-				stroke="currentColor"
-				fill="currentColor"
-				aria-hidden="true"
-				astro-icon="social/instagram"
-				stroke-width="0"
-				viewBox="0 0 512 512"
-				height="32"
-				width="32"
-				xmlns="http://www.w3.org/2000/svg"
-			>
-				<path
-					d="M349.33 69.33a93.62 93.62 0 0 1 93.34 93.34v186.66a93.62 93.62 0 0 1-93.34 93.34H162.67a93.62 93.62 0 0 1-93.34-93.34V162.67a93.62 93.62 0 0 1 93.34-93.34h186.66m0-37.33H162.67C90.8 32 32 90.8 32 162.67v186.66C32 421.2 90.8 480 162.67 480h186.66C421.2 480 480 421.2 480 349.33V162.67C480 90.8 421.2 32 349.33 32z"
-				></path>
-				<path
-					d="M377.33 162.67a28 28 0 1 1 28-28 27.94 27.94 0 0 1-28 28zM256 181.33A74.67 74.67 0 1 1 181.33 256 74.75 74.75 0 0 1 256 181.33m0-37.33a112 112 0 1 0 112 112 112 112 0 0 0-112-112z"
-				></path>
-			</svg>
-		</a>
-		<a
-			href="https://github.com/javimogan"
-			target="_blank"
-			rel="nofollow noreferrer noopener noindex"
-		>
-			<span class="sr-only">Ir al repositorio GitHub de javimogan</span>
-			<svg
-				viewBox="0 0 16 16"
-				aria-hidden="true"
-				width="32"
-				height="32"
-				astro-icon="social/github"
-				><path
-					fill="currentColor"
-					d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"
-				></path></svg
-			>
-		</a>
+				<span class="sr-only">{srOnly}</span>
+				<Icon size={32}/>
+			</a>
+		))}
 	</div>
 </footer>
 <style>
@@ -85,5 +61,9 @@ const today = new Date();
 	}
 	.social-links a:hover {
 		color: rgb(var(--gray-dark));
+	}
+	.social-links svg {
+		color:aquamarine;
+		background-color: blue;
 	}
 </style>

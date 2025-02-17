@@ -14,12 +14,15 @@
     "@astrojs/mdx": "^4.0.8",
     "@astrojs/rss": "^4.0.11",
     "@astrojs/sitemap": "^3.2.1",
+    "@tailwindcss/vite": "^4.0.6",
     "astro": "^5.3.0",
     "dotenv": "^16.4.7",
     "gray-matter": "^4.0.3",
     "moment": "^2.30.1",
     "moment-timezone": "^0.5.47",
-    "node-fetch": "^3.3.2"
+    "node-fetch": "^3.3.2",
+    "react-icons": "^5.4.0",
+    "tailwindcss": "^4.0.6"
   },
   "devDependencies": {
     "@types/node": "^22.13.4",

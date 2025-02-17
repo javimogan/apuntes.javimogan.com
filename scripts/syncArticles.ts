@@ -149,6 +149,10 @@ const downloadFiles = async (url: string, localPath: string): Promise<void> => {
                 if (data.pubDate && data.pubDate.split(" ").length === 1) {
                     data.pubDate = data.pubDate + " 00:00";
                 }
+                //Si no tiene title, se le asigna el nombre del archivo
+                if (!data.title) {
+                    data.title = path.basename(file.name, path.extname(file.name));
+                }
                 data.pubDate = data.pubDate?? data.updatedDate;
 
                 if (!folderPubDate || moment(data.pubDate, 'DD/MM/YYYY HH:mm').isBefore(moment(folderPubDate, 'DD/MM/YYYY HH:mm'))) {
