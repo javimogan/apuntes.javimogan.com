@@ -20,10 +20,10 @@
 	--text-light: #616161;
 	--shadow-color-light: rgb(0, 0, 0, .5);
 	/* Dark */
-	--background-dark: #121212;
+	--background-dark: #101218;
 	--contrast-dark: #BB8BF5;
 	/* --contrast-dark: #7e5ca9; */
-	--text-dark: #8A8A8A;
+	--text-dark: #e8e8e8;
 	--shadow-color-dark: rgb(255, 255, 255, .3);
 
 
@@ -120,12 +120,12 @@ body {
 	line-height: 1.7;
 }
 
-main {
+/* main {
 	width: 720px;
 	max-width: calc(100% - 2em);
 	margin: auto;
 	padding: 3em 1em;
-}
+} */
 
 h1,
 h2,
