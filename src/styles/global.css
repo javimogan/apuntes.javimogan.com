@@ -68,7 +68,19 @@ html[scheme='dark-mode'] {
 #theme-mode.animate {
 	animation: animate .3s cubic-bezier(0.4, 0.0, 0.2, 1);
 }
+@keyframes animate {
+    0% {
+        transform: scale(1);
+    }
 
+    50% {
+        transform: scale(0);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
 #theme-mode {
 	background-color: transparent;
 	border: none;
