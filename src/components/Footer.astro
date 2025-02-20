@@ -26,14 +26,15 @@ export const _socialLinks = [
 ];
 ---
 
-<footer>
+<footer class="pt-8 pr-4 pb-24 pl-4 text-gray text-center bg-gray">
 	&copy; 
 	{today.getFullYear()} // javimogan
 	<!-- // All rights reserved -->
-	<div class="social-links">
+	<div class="social-links flex justify-center gap-4 mt-4">
 		{_socialLinks.map(({ name, url, icon:Icon, srOnly }) => (
 			<a href={url}
 				target="_blank"
+				class="no-underline hover:text-accent"
 				rel="nofollow noreferrer noopener noindex"
 			>
 				<span class="sr-only">{srOnly}</span>
@@ -44,26 +45,12 @@ export const _socialLinks = [
 </footer>
 <style>
 	footer {
-		padding: 2em 1em 6em 1em;
-		/* background: linear-gradient(var(--gray-gradient)) no-repeat; */
 		color: rgb(var(--gray));
-		text-align: center;
-	}
-	.social-links {
-		display: flex;
-		justify-content: center;
-		gap: 1em;
-		margin-top: 1em;
 	}
 	.social-links a {
-		text-decoration: none;
 		color: rgb(var(--gray));
 	}
 	.social-links a:hover {
 		color:var(--accent);
-	}
-	.social-links svg {
-		color:aquamarine;
-		background-color: blue;
 	}
 </style>

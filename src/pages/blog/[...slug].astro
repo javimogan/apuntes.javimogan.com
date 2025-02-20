@@ -4,6 +4,7 @@ import BlogPost from "../../layouts/BlogPost.astro";
 import { render } from "astro:content";
 import moment from "moment-timezone";
 import PostList from "../../components/PostList.astro";
+import ProseLayout from "../../layouts/ProseLayout.astro";
 
 /**
  * Obtiene los artículos y carpetas dentro de un nivel específico.
@@ -81,14 +82,28 @@ const { Content } = await render(post);
 const childrenPosts = await getPosts(post.id);
 ---
 
-<BlogPost {...post.data}>
-	<Content />
-	{
-		childrenPosts.length > 0 && (
-			<article style="margin-top: 4em;">
-				<hr style="margin-bottom: 2em;"/>
-				<PostList posts={childrenPosts} />
-			</article>
-		)
-	}
-</BlogPost>
+<!-- If Content is not empty -->
+ {post.body?(
+	 <BlogPost {...post.data}>
+		 <Content />
+		 {
+			 childrenPosts.length > 0 && (
+				 <article style="margin-top: 4em;">
+					 <hr style="margin-bottom: 2em;"/>
+					 <PostList posts={childrenPosts} />
+				 </article>
+			 )
+		 }
+	 </BlogPost>
+ ):(
+	<ProseLayout>
+		{
+			 childrenPosts.length > 0 && (
+				 <article style="margin-top: 4em;">
+					 <PostList posts={childrenPosts} />
+				 </article>
+			 )
+		 }
+	</ProseLayout>
+ )}
+

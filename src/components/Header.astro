@@ -5,12 +5,12 @@ import { SITE_TITLE } from "../consts";
 import DarkThemeButton from "./DarkThemeButton.astro";
 ---
 
-<header class="w-full bg-white shadow-md">
+<header class="w-full shadow-md">
 	<nav class="flex items-center justify-between px-4 py-2">
 		<!-- Título del sitio alineado a la izquierda -->
 		<div>
 			<h2 class="text-lg font-semibold">
-				<a href="/" class="text-black no-underline text-3xl"
+				<a href="/" class="no-underline text-3xl"
 					>{SITE_TITLE}</a
 				>
 			</h2>
@@ -40,14 +40,11 @@ import DarkThemeButton from "./DarkThemeButton.astro";
 </header>
 
 <style>
-	/* Estilos adicionales para los enlaces de navegación */
 	nav a {
-		/* padding: 1em 0.5em; */
-		color: rgb(var(--black));
+		color: var(--color-text);
 		border-bottom: 4px solid transparent;
 		text-decoration: none;
 	}
-
 	nav a.active {
 		border-bottom-color: var(--accent);
 	}
