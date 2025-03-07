@@ -24,8 +24,6 @@ jobs:
       #     cache: 'npm'
       - name: ⚙️ Ejecutar Prebuild
         run: npm run prebuild
-        env:
-          TOKEN_GITHUB: ${{ secrets.TOKEN_GITHUB }}
 
       # - name: 📝 Comprobar cambios en Git
       #   run: |
