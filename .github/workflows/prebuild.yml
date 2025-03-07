@@ -11,12 +11,13 @@ jobs:
       - name: 🔄 Clonar repositorio
         uses: actions/checkout@v3
         with:
-          token: ${{ secrets.TOKEN_GITHUB }}  # Asegúrate de que tiene permisos de escritura
-          persist-credentials: false  # Evita conflictos de credenciales
-          fetch-depth: 0  # Obtiene todas las ramas
+            submodules: recursive  # Fetch the Docsy theme
+            fetch-depth: 0         # Fetch all history for .GitInfo and .Lastmod
+      - name: Install, build, and upload your site output
+        uses: withastro/action@v2
 
-      - name: 🛠️ Instalar dependencias
-        run: npm install
+      # - name: 🛠️ Instalar dependencias
+      #   run: npm install
 
       - name: ⚙️ Ejecutar Prebuild
         run: npm run prebuild
