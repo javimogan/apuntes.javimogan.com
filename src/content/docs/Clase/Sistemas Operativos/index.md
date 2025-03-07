@@ -1,5 +1,6 @@
 ---
 title: DHCP y DNS
+id: 042f53de40
 lastUpdated: 2025-03-07T15:53:47.000Z
 ---
 # _Configuración e instalación de un servidor DHCP y la odisea del servidor DNS._

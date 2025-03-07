@@ -1,0 +1,47 @@
+---
+import StarlightPage from "@astrojs/starlight/components/StarlightPage.astro";
+
+import { getCollection } from "astro:content";
+
+// Definir las rutas dinámicas en Astro
+export async function getStaticPaths() {
+  const files = await getCollection("docs");
+  // Mapear archivos a IDs extraídos del frontmatter
+  const rutas = files
+    .map((f) => ({ path: "/" + (f.id === "index" ? "" : f.id), id: f.data.id }))
+    .filter((f) => f.id);
+
+  return rutas.map((r) => ({
+    params: { id: r.id },
+  }));
+}
+
+// Obtener el ID desde la URL
+const { id } = Astro.params;
+
+const files = await getCollection("docs");
+const rutas = files
+  .map((f) => ({ path: "/" + (f.id === "index" ? "" : f.id), id: f.data.id }))
+  .filter((f) => f.id);
+let newPath = rutas.find((r) => r.id === id)?.path;
+
+---
+<html>
+  <head>
+    <meta http-equiv="refresh" content={`0; url=${newPath}`} />
+  </head>
+  <body>
+    <StarlightPage frontmatter={{ title: "Acortador de enlaces", template:"splash"}}>
+      <p>Redirigiendo a <a href={newPath}>{newPath}</a></p>
+      <!-- <CustomComponent /> -->
+    </StarlightPage>
+  </body>
+</html>
+<!-- 
+<html>
+  <head>
+    <meta http-equiv="refresh" content={`0; url=${newPath}`} />
+  </head>
+  <body>
+  </body>
+</html> -->
