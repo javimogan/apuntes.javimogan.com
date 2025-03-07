@@ -1,7 +1,7 @@
 ---
 title: DHCP y DNS
 id: 042f53de40
-lastUpdated: 2025-03-07T22:10:25.000Z
+lastUpdated: 2025-03-07T22:11:57.000Z
 pagefind: false
 ---
 # _Configuración e instalación de un servidor DHCP y DNS._
@@ -73,7 +73,7 @@ Tanto **BIND9** como **systemd-resolved** son herramientas para la resolución d
     
     Añadir la siguiente configuración:
     
-    ```conf
+    ```
     subnet 192.168.1.0 netmask 255.255.255.0 {
         range 192.168.1.10 192.168.1.254;
         option routers 192.168.1.1;
@@ -418,6 +418,6 @@ Obviamente, necesitamos [instalar ``Docker``](https://docs.docker.com/engine/ins
 
 Una vez instalado AdGuard Home, se accede a la página de configuración desde el puerto ``3000``. Una vez se ha establecido el usuario administrador y ha finalizado la configuración inicial, accedemos a la plataforma mediante el puerto ``80``.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTc3NjQwMjcyMiwtMTgzNzIxNDg4MiwyMD
+eyJoaXN0b3J5IjpbLTc3ODc0MjE0NiwtMTgzNzIxNDg4MiwyMD
 gwNjYxNzkxXX0=
 -->
