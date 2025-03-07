@@ -13,6 +13,7 @@ jobs:
         with:
             submodules: recursive  # Fetch the Docsy theme
             fetch-depth: 0         # Fetch all history for .GitInfo and .Lastmod
+            token: ${{ secrets.TOKEN_GITHUB }}
       - name: Install, build, and upload your site output
         uses: withastro/action@v2
 
