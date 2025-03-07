@@ -22,7 +22,7 @@ jobs:
       - name: 📝 Comprobar cambios en Git
         run: |
           git config --global user.name "GitHub Actions"
-          git config --global user.email "github-actions@github.com"
+          git config --global user.email "diazalonsojavi@gmail.com"
 
           # Verificar si hay cambios
           if [[ -n $(git status --porcelain) ]]; then
