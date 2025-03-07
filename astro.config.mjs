@@ -2,6 +2,7 @@
 import { defineConfig } from "astro/config";
 import starlight from "@astrojs/starlight";
 import tailwind from "@astrojs/tailwind";
+
 // https://astro.build/config
 export default defineConfig({
     integrations: [
@@ -9,8 +10,7 @@ export default defineConfig({
             title: "Apuntes",
             description: "Apuntes varios",
             logo: {
-                //Local path
-                src: 'https://apuntes.javimogan.com/favicon.svg',
+                src: "/public/favicon.svg",
                 alt: "Apuntes",
             },
             locales: {
