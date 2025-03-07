@@ -9,14 +9,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 🔄 Clonar repositorio
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
             submodules: recursive  # Fetch the Docsy theme
             fetch-depth: 0         # Fetch all history for .GitInfo and .Lastmod
             token: ${{ secrets.TOKEN_GITHUB }}
       - name: Install, build, and upload your site output
         uses: withastro/action@v2
-
       # - name: 🛠️ Instalar dependencias
       #   run: npm install
 
