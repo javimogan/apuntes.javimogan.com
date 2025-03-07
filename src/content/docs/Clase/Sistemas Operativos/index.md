@@ -1,7 +1,7 @@
 ---
 title: DHCP y DNS
 id: 042f53de40
-lastUpdated: 2025-03-07T21:35:03.000Z
+lastUpdated: 2025-03-07T22:10:25.000Z
 pagefind: false
 ---
 # _Configuración e instalación de un servidor DHCP y DNS._
@@ -416,14 +416,8 @@ docker run --name adguardhome\
 
 Obviamente, necesitamos [instalar ``Docker``](https://docs.docker.com/engine/install/) en nuestro equipo.
 
-Una vez instalado AdGuard Home, se accede a la página de configuración desde el puerto ``3000``. Una vez se ha establecido el usuario administrador y ha finalizado la configuración inicial, accedemos a la plataforma mediante el puerto ``80``.SSOO título
-description: >-
-  Here is a sample of some basic Markdown syntax that can be used when writing
-  Markdown content in Astro.
-updatedDate: '16/02/2025 01:29'
-pubDate: '16/02/2025 01:29'
----
-# Sistemas Operativos
+Una vez instalado AdGuard Home, se accede a la página de configuración desde el puerto ``3000``. Una vez se ha establecido el usuario administrador y ha finalizado la configuración inicial, accedemos a la plataforma mediante el puerto ``80``.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4MzcyMTQ4ODIsMjA4MDY2MTc5MV19
+eyJoaXN0b3J5IjpbMTc3NjQwMjcyMiwtMTgzNzIxNDg4MiwyMD
+gwNjYxNzkxXX0=
 -->
