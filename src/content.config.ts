@@ -1,20 +1,37 @@
-import { glob } from 'astro/loaders';
+
+import { docsSchema } from "@astrojs/starlight/schema";
+import { docsLoader } from "@astrojs/starlight/loaders";
 import { defineCollection, z } from 'astro:content';
 import moment from 'moment-timezone';
-const blog = defineCollection({
+const docs = defineCollection({
 	// Load Markdown and MDX files in the `src/content/blog/` directory.
-	loader: glob({ base: './src/content/blog', pattern: '**/*.{md,mdx}' }),
+	loader: docsLoader(),
 	// Type-check frontmatter using a schema
-	schema: z.object({
-		title: z.string(),
-		description: z.string().optional(),
-		draft: z.boolean().optional(),
-		hidden: z.boolean().optional(),
-		// Transform string to Date object
-		pubDate: z.preprocess((arg:any) => moment(arg, "DD/MM/YYYY HH:mm").tz("Europe/Madrid").toDate(), z.date()),
-		updatedDate: z.preprocess((arg:any) => moment(arg, "DD/MM/YYYY HH:mm").tz("Europe/Madrid").toDate(), z.date()).optional(),
-		heroImage: z.string().optional(),
-	}),
+	schema: docsSchema(),
+	// schema: z.object({
+	// 	...docsSchema(),
+		// lastUpdate: z.preprocess((arg:any) => moment(arg, "DD-MM-YYYY HH:mm").tz("Europe/Madrid").toDate(), z.date()).optional(),
+	// }),
 });
 
-export const collections = { blog };
+export const collections = { docs };
+// import { defineCollection, z } from "astro:content";
+// import { docsLoader } from "@astrojs/starlight/loaders";
+// import { docsSchema } from "@astrojs/starlight/schema";
+// import moment from "moment-timezone";
+
+// export const collections = {
+//   docs: defineCollection({
+//     loader: docsLoader(),
+//     schema: docsSchema({
+//       extend: z.object({
+//         lastUpdated: z.string()
+//       }),
+//     }),
+//   }),
+// };
+
+// ...z.object({
+// 	lastUpdate: z.preprocess((arg:any) => moment(arg, "DD-MM-YYYY HH:mm").tz("Europe/Madrid").toDate(), z.date()).optional(),
+
+// }),

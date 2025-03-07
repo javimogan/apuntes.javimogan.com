@@ -1,19 +1,24 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
-import mdx from '@astrojs/mdx';
-import sitemap from '@astrojs/sitemap';
-
-import tailwindcss from '@tailwindcss/vite';
+import { defineConfig } from "astro/config";
+import starlight from "@astrojs/starlight";
+import tailwind from "@astrojs/tailwind";
 
 // https://astro.build/config
 export default defineConfig({
-    site: 'https://example.com',
-    integrations: [mdx(), sitemap()],
-    vite: {
-      ssr: {
-          noExternal: ['react-icons'],
-      },
-
-      plugins: [tailwindcss()],
-    },
+    integrations: [
+        starlight({
+            title: "Apuntes",
+            // routeMiddleware: ["./src/routeData.ts"],
+            social: {
+                github: "https://github.com/javimogan/apuntes.javimogan.com",
+            },
+            defaultLocale: "es",
+            components: {
+                Sidebar: "./src/components/Sidebar.astro",
+                Footer: "./src/components/Footer.astro",
+            },
+            customCss: ["./src/tailwind.css"],
+        }),
+        tailwind({ applyBaseStyles: false }),
+    ],
 });

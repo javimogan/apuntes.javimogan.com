@@ -1,8 +1,10 @@
 ---
+import Default from "@astrojs/starlight/components/Footer.astro";
+
 const today = new Date();
-import InstagramLogo from '../components/Logos/instagram.astro'
-import GitHubLogo from '../components/Logos/github.astro'
-import LinkeinLogo from '../components/Logos/linkedin.astro'
+import InstagramLogo from './Logos/instagram.astro'
+import GitHubLogo from './Logos/github.astro'
+import LinkeinLogo from './Logos/linkedin.astro'
 
 export const _socialLinks = [
 	{
@@ -25,8 +27,10 @@ export const _socialLinks = [
 	},
 ];
 ---
-
-<footer class="pt-8 pr-4 pb-24 pl-4 text-gray text-center bg-gray">
+<Default {...Astro.props}>
+	<slot />
+</Default>
+<div class="text-gray-700 text-center">
 	&copy; 
 	{today.getFullYear()} // javimogan
 	<!-- // All rights reserved -->
@@ -34,23 +38,12 @@ export const _socialLinks = [
 		{_socialLinks.map(({ name, url, icon:Icon, srOnly }) => (
 			<a href={url}
 				target="_blank"
-				class="no-underline hover:text-accent"
+				class="no-underline"
 				rel="nofollow noreferrer noopener noindex"
 			>
 				<span class="sr-only">{srOnly}</span>
-				<Icon size={32}/>
+				<Icon classname="text-gray-400 hover:text-accent-600 dark:hover:text-accent-200" size={32}/>
 			</a>
 		))}
 	</div>
-</footer>
-<style>
-	footer {
-		color: rgb(var(--gray));
-	}
-	.social-links a {
-		color: rgb(var(--gray));
-	}
-	.social-links a:hover {
-		color:var(--accent);
-	}
-</style>
+</div>

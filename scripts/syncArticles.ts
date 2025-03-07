@@ -8,12 +8,15 @@ import moment from "moment-timezone";
 const OWNER = "javimogan";
 const REPO = "contenidos";
 
-const BLOG_PATH = "blog";
-const PUBLIC_IMAGE_DIR = "/images/"+BLOG_PATH
-const PUBLIC_DEFAULT_IMAGE_DIR = "/images/default"
-const OS_PUBLIC_IMAGE_DIR = path.resolve(`public/${PUBLIC_IMAGE_DIR}`)
-const OS_PUBLIC_DEFAULT_IMAGE_DIR = path.resolve(`public/${PUBLIC_DEFAULT_IMAGE_DIR}`)
-const OUTPUT_DIR = path.resolve("src/content/"+BLOG_PATH);
+const CONTENT_PATH = "docs";
+const PUBLIC_IMAGE_DIR = "/images/" + CONTENT_PATH;
+const PUBLIC_DEFAULT_IMAGE_DIR = "/images/default";
+
+const OS_PUBLIC_IMAGE_DIR = path.resolve(`public/${PUBLIC_IMAGE_DIR}`);
+const OS_PUBLIC_DEFAULT_IMAGE_DIR = path.resolve(
+    `public/${PUBLIC_DEFAULT_IMAGE_DIR}`,
+);
+const OUTPUT_DIR = path.resolve("src/content/" + CONTENT_PATH);
 
 const GITHUB_API_URL =
     `https://api.github.com/repos/${OWNER}/${REPO}/contents/`;
@@ -22,23 +25,16 @@ const HEADERS = {
     "Accept": "application/vnd.github.v3+json",
 };
 
-[OUTPUT_DIR, OS_PUBLIC_IMAGE_DIR, OS_PUBLIC_DEFAULT_IMAGE_DIR].forEach((dir) => {
-    if (!fs.existsSync(dir)) {
-        fs.mkdirSync(dir, { recursive: true });
-    }
-});
+[OUTPUT_DIR, OS_PUBLIC_IMAGE_DIR, OS_PUBLIC_DEFAULT_IMAGE_DIR].forEach(
+    (dir) => {
+        if (!fs.existsSync(dir)) {
+            fs.mkdirSync(dir, { recursive: true });
+        }
+    },
+);
 
 const githubFiles: Set<string> = new Set();
 const downloadedImages: Set<string> = new Set();
-
-// Obtener una imagen aleatoria de /public/images/default/
-const getRandomDefaultImage = (): string => {
-    const files = fs.readdirSync(OS_PUBLIC_DEFAULT_IMAGE_DIR).filter((file) =>
-        /\.(png|jpe?g|webp|gif)$/i.test(file)
-    );
-    if (files.length === 0) return "";
-    return path.join(PUBLIC_DEFAULT_IMAGE_DIR,files[Math.floor(Math.random() * files.length)]);
-};
 
 // Obtener metadatos del archivo desde la API de GitHub
 const getGitHubMetadata = async (filePath: string) => {
@@ -65,29 +61,29 @@ const getGitHubMetadata = async (filePath: string) => {
 };
 
 // Descargar imágenes de `heroImage`
-const downloadImage = async (imageUrl: string, imageName: string) => {
-    try {
-        const imagePath = path.join(OS_PUBLIC_IMAGE_DIR, imageName);
-        downloadedImages.add(imagePath);
-        if (fs.existsSync(imagePath)) return;
+// const downloadImage = async (imageUrl: string, imageName: string) => {
+//     try {
+//         const imagePath = path.join(OS_PUBLIC_IMAGE_DIR, imageName);
+//         downloadedImages.add(imagePath);
+//         if (fs.existsSync(imagePath)) return;
 
-        const response = await fetch(imageUrl);
-        if (!response.ok) {
-            throw new Error(`Error descargando imagen: ${response.statusText}`);
-        }
-        if (!fs.existsSync(imagePath.split("/").slice(0, -1).join("/"))) {
-            fs.mkdirSync(imagePath.split("/").slice(0, -1).join("/"), {
-                recursive: true,
-            });
-        }
+//         const response = await fetch(imageUrl);
+//         if (!response.ok) {
+//             throw new Error(`Error descargando imagen: ${response.statusText}`);
+//         }
+//         if (!fs.existsSync(imagePath.split("/").slice(0, -1).join("/"))) {
+//             fs.mkdirSync(imagePath.split("/").slice(0, -1).join("/"), {
+//                 recursive: true,
+//             });
+//         }
 
-        const buffer = await response.arrayBuffer();
-        fs.writeFileSync(imagePath, Buffer.from(buffer));
-        console.log(`✅ Imagen descargada: ${imageName}`);
-    } catch (error) {
-        console.error(`❌ Error al descargar la imagen ${imageUrl}:`, error);
-    }
-};
+//         const buffer = await response.arrayBuffer();
+//         fs.writeFileSync(imagePath, Buffer.from(buffer));
+//         console.log(`✅ Imagen descargada: ${imageName}`);
+//     } catch (error) {
+//         console.error(`❌ Error al descargar la imagen ${imageUrl}:`, error);
+//     }
+// };
 
 // Descargar archivos recursivamente
 const downloadFiles = async (url: string, localPath: string): Promise<void> => {
@@ -107,22 +103,20 @@ const downloadFiles = async (url: string, localPath: string): Promise<void> => {
 
         let hasIndex = false;
         const childrenFiles: string[] = [];
-        let folderPubDate: string | null = null;
-        let folderUpdatedDate: string | null = null;
-        let folderHeroImage: string | null = null;
+        // let folderPubDate: string | null = null;
+        // let folderUpdatedDate: string | null = null;
+        // let folderHeroImage: string | null = null;
 
-        const images = files.filter((file) =>
-            file.type === "file" && /\.(png|jpe?g|webp|gif)$/i.test(file.name)
-        );
+        //TODO: Images
+        // const images = files.filter((file) =>
+        //     file.type === "file" && /\.(png|jpe?g|webp|gif)$/i.test(file.name)
+        // );
 
         //Save images in the folder
-        for (const image of images) {
-            //const pathName = path.join(IMAGE_DIR, image.path);
-            downloadedImages.add(path.join(OS_PUBLIC_IMAGE_DIR, image.path));
-            // if (!fs.existsSync(imagePath)) {
-            await downloadImage(image.download_url,  image.path);
-            // }
-        }
+        // for (const image of images) {
+        //     downloadedImages.add(path.join(OS_PUBLIC_IMAGE_DIR, image.path));
+        //     await downloadImage(image.download_url, image.path);
+        // }
 
         for (const file of files) {
             const filePath = path.join(localPath, file.name);
@@ -136,40 +130,26 @@ const downloadFiles = async (url: string, localPath: string): Promise<void> => {
                 const metadata = await getGitHubMetadata(file.path);
                 const { data, content: markdownContent } = matter(content);
 
+                // Ignorar archivos en borrador
                 if (data.draft === true) continue;
 
                 githubFiles.add(filePath);
                 childrenFiles.push(filePath);
 
-                data.updatedDate = moment(metadata.updatedDate).format(
-                    "DD/MM/YYYY HH:mm",
-                );
-
-                //Comprobar si data.pubDate es DD/MM/YYYY HH:mm o DD/MM/YYYY
-                if (data.pubDate && data.pubDate.split(" ").length === 1) {
-                    data.pubDate = data.pubDate + " 00:00";
-                }
-                //Si no tiene title, se le asigna el nombre del archivo
+                // Set lastUpdated
+                data.lastUpdated = moment(metadata.updatedDate).toDate();
+                //Set default title
                 if (!data.title) {
-                    data.title = path.basename(file.name, path.extname(file.name));
+                    data.title = path.basename(
+                        file.name,
+                        path.extname(file.name),
+                    );
                 }
-                data.pubDate = data.pubDate?? data.updatedDate;
 
-                if (!folderPubDate || moment(data.pubDate, 'DD/MM/YYYY HH:mm').isBefore(moment(folderPubDate, 'DD/MM/YYYY HH:mm'))) {
-                    folderPubDate = data.pubDate;
-                }
-                
-                if (
-                    !folderUpdatedDate ||
-                    moment(data.updatedDate, 'DD/MM/YYYY HH:mm').isAfter(moment(folderUpdatedDate, 'DD/MM/YYYY HH:mm'))
-                ) {
-                    folderUpdatedDate = data.updatedDate;
-                }
-                
-                data.heroImage = data.heroImage?path.join(PUBLIC_IMAGE_DIR, file.path.split("/").slice(0, -1).join("/"), data.heroImage): getRandomDefaultImage();
-                if (!folderHeroImage && data.heroImage) {
-                    folderHeroImage = data.heroImage;
-                }
+                // // data.heroImage = data.heroImage?path.join(PUBLIC_IMAGE_DIR, file.path.split("/").slice(0, -1).join("/"), data.heroImage): getRandomDefaultImage();
+                // if (!folderHeroImage && data.heroImage) {
+                //     folderHeroImage = data.heroImage;
+                // }
 
                 if (file.name === "index.md" || file.name === "index.mdx") {
                     hasIndex = true;
@@ -184,6 +164,8 @@ const downloadFiles = async (url: string, localPath: string): Promise<void> => {
                     console.log(`✅ Descargado con metadata: ${filePath}`);
                 }
             } else if (file.type === "dir") {
+                //Si es una carpeta ocula, ignorar
+                if (file.name.startsWith(".")) continue;
                 if (!fs.existsSync(filePath)) {
                     fs.mkdirSync(filePath, { recursive: true });
                 }
@@ -192,15 +174,18 @@ const downloadFiles = async (url: string, localPath: string): Promise<void> => {
         }
 
         // Si la carpeta no tiene `index.md`, crear uno automáticamente
-        if (!hasIndex && childrenFiles.length > 0 && localPath.split("/").slice(-1)[0] !== BLOG_PATH) {
+        if (
+            !hasIndex &&
+            localPath.split("/").slice(-1)[0] !== CONTENT_PATH
+        ) {
             console.log(`📄 Creando index.md para la carpeta: ${localPath}`);
 
             const folderData = {
                 title: path.basename(localPath),
-                pubDate: folderPubDate ?? moment().format("DD/MM/YYYY HH:mm"),
-                updatedDate: folderUpdatedDate ??
-                    moment().format("DD/MM/YYYY HH:mm"),
-                heroImage: folderHeroImage ?? getRandomDefaultImage(),
+                // pubDate: folderPubDate ?? moment().format("DD/MM/YYYY HH:mm"),
+                // updatedDate: folderUpdatedDate ??
+                //     moment().format("DD/MM/YYYY HH:mm"),
+                // heroImage: folderHeroImage ?? getRandomDefaultImage(),
                 autogenerated: true,
             };
 

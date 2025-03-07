@@ -1,0 +1,89 @@
+---
+import Default from "@astrojs/starlight/components/Sidebar.astro";
+
+import type { StarlightRouteData } from "@astrojs/starlight/route-data";
+import { addIssueToContext } from "astro:schema";
+
+// Eliminar el primer grupo si solo tiene un elemento
+function promoteRelevantGroup(
+    entries: StarlightRouteData["sidebar"],
+    path: string,
+): StarlightRouteData["sidebar"] {
+    let filteredEntries = filterSidebar(entries, path);
+
+    while (
+        filteredEntries.length === 1 &&
+        filteredEntries[0].type === "group"
+    ) {
+        filteredEntries = filteredEntries[0].entries;
+    }
+
+    return filteredEntries;
+}
+function filterSidebar(
+    entries: StarlightRouteData["sidebar"],
+    path: string,
+): StarlightRouteData["sidebar"] {
+    return entries
+        .map((entry) => {
+            if (entry.type === "link") {
+                return entry.href.startsWith("/" + path) ? entry : null;
+            } else if (entry.type === "group") {
+                const filteredEntries = filterSidebar(entry.entries, path);
+                return filteredEntries.length > 0
+                    ? { ...entry, entries: filteredEntries }
+                    : null;
+            }
+            return null;
+        })
+        .filter(
+            (entry): entry is StarlightRouteData["sidebar"][0] =>
+                entry !== null,
+        );
+}
+
+// Obtener la ruta actual desde Astro.locals
+let path = Astro.locals.starlightRoute.id;
+path.split("/").length > 1 ? (path = path.split("/")[0]) : (path = path);
+// Aplicar el filtro
+const filteredSidebar = promoteRelevantGroup(
+    Astro.locals.starlightRoute.sidebar,
+    path,
+);
+//Ordenar el sidebar. Primero van los archivos index, después va por orden alfabético tanto grupos como links. Debe funcionar recursivamente dentro de los grupos
+function sortSidebar(
+    entries: StarlightRouteData["sidebar"],
+): StarlightRouteData["sidebar"] {
+    return entries
+        .map((entry) => {
+            if (entry.type === "group") {
+                // Ordenar recursivamente las entradas dentro del grupo
+                entry.entries = sortSidebar(entry.entries);
+            }
+            return entry;
+        })
+        .sort((a, b) => {
+            // Fichero ficheros
+            if (a.type === "link" && b.type === "group") return -1;
+            if (a.type === "group" && b.type === "link") return 1;
+            //Ficheros por longitud de href
+            if (a.type === "link" && b.type === "link") {
+                if (a.href.split("/").length > b.href.split("/").length)
+                    return 1;
+                if (a.href.split("/").length < b.href.split("/").length)
+                    return -1;
+            }
+            //Sino por orden alfabético
+            return a.label.localeCompare(b.label, undefined, {
+                sensitivity: "base",
+                numeric: true,
+            });
+        });
+}
+console.log(Astro.locals.starlightRoute.id);
+Astro.locals.starlightRoute.sidebar = sortSidebar(filteredSidebar);
+
+Astro.locals.starlightRoute.sidebar = filteredSidebar;
+---
+
+<Default {...Astro.props}><slot /></Default>
