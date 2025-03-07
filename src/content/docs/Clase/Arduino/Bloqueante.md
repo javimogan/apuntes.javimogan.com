@@ -34,7 +34,6 @@ void loop() {
     // Bloquea el código 3 segundos
     delay(3000);
 }
-
 ```
 
 El problema con este enfoque es que **el microcontrolador no puede hacer nada más** mientras espera en `delay()`. Si quisieras realizar otra acción, tendrías que esperar a que termine el `delay()`.

@@ -1,13 +1,12 @@
 ---
-title: DHCP y DNS
+title: Servidor DHCP y DNS
 id: 042f53de40
-lastUpdated: 2025-03-07T22:11:57.000Z
+lastUpdated: 2025-03-07T22:40:09.000Z
 pagefind: false
 ---
-# _Configuración e instalación de un servidor DHCP y DNS._
 
-### Consideraciones previas
-#### 1. Fichero resolved.conf
+## Consideraciones previas
+### 1. Fichero resolved.conf
 
 El fichero ``/etc/systemd/resolved.conf``, debería verse algo similar a esto:
 
@@ -24,7 +23,7 @@ docker container stop $(docker container ls -aq)
 docker container prune
 ```
 
-#### 2. DHCP y DNS
+### 2. DHCP y DNS
 
 **DHCP**
 
@@ -216,7 +215,7 @@ Es la configuración estándar de DNS, que traduce nombres de dominio a direccio
     
     Modificarla:
     
-    ```conf
+    ```
     $TTL    604800
     @       IN      SOA     servidor.augus.local. root.augus.local. (
                             2         ; Serial
@@ -227,7 +226,8 @@ Es la configuración estándar de DNS, que traduce nombres de dominio a direccio
     ;
     @       IN      NS      servidor.augus.local.
     1       IN      PTR     servidor.augus.local.
-    
+    ```
+   
     
 5.  **Configurar el reenviador de DNS**: Editar el archivo:
     
@@ -251,13 +251,11 @@ Es la configuración estándar de DNS, que traduce nombres de dominio a direccio
     ```bash
     sudo systemctl restart bind9
     sudo systemctl enable bind9
-    
     ```
 7.  **Pruebas**:
     
     ```bash
     nslookup servidor.augus.local
-    
     ```
     ```bash
     ping -c1 servidor.augus.local
@@ -325,8 +323,8 @@ Para ello, debemos habilitar el reenvío de paquetes.
 	sudo nano /etc/rc.local
 	```
 	Y añadir los dos comandos anteriores.
-----------
-### SSH
+
+## SSH
 
 SSH (**Secure Shell**) es un protocolo que permite acceder de manera remota y segura a un servidor o máquina mediante una conexión cifrada. Se utiliza para administrar servidores, ejecutar comandos y transferir archivos de forma segura.
 
@@ -362,10 +360,7 @@ Antes de nada, se debe instalar las aplicaciones que nos permitan utilizar este 
 	scp usuario@servidor:/ruta/al/archivo_remoto.txt /ruta/local/
 	```
 
-
-----------
-
-### Otras herramientas
+## Otras herramientas
 DHCP y DNS, son protocolos y sistemas que pueden ser implementados mediante varias herramientas.
 
 En este tema, hemos configurado un servidor DHCP mediante la aplicación ``isc-dhcp-server``y un servidor DNS configurado con ``bind9``. Pero existen una gran multitud de alternativas.
@@ -418,6 +413,6 @@ Obviamente, necesitamos [instalar ``Docker``](https://docs.docker.com/engine/ins
 
 Una vez instalado AdGuard Home, se accede a la página de configuración desde el puerto ``3000``. Una vez se ha establecido el usuario administrador y ha finalizado la configuración inicial, accedemos a la plataforma mediante el puerto ``80``.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTc3ODc0MjE0NiwtMTgzNzIxNDg4MiwyMD
-gwNjYxNzkxXX0=
+eyJoaXN0b3J5IjpbLTM1MDY2Mzc1NiwtNzc4NzQyMTQ2LC0xOD
+M3MjE0ODgyLDIwODA2NjE3OTFdfQ==
 -->

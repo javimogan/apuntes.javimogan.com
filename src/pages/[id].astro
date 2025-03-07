@@ -1,6 +1,6 @@
 ---
 import StarlightPage from "@astrojs/starlight/components/StarlightPage.astro";
-
+import { render } from "astro:content";
 import { getCollection } from "astro:content";
 
 // Definir las rutas dinámicas en Astro
@@ -23,25 +23,23 @@ const files = await getCollection("docs");
 const rutas = files
   .map((f) => ({ path: "/" + (f.id === "index" ? "" : f.id), id: f.data.id }))
   .filter((f) => f.id);
-let newPath = rutas.find((r) => r.id === id)?.path;
+// let newPath = rutas.find((r) => r.id === id)?.path;
 
+const entry = files.find((f) => f.data.id === id) ?? { data: { title: "404" } };
+const { Content } = await render(entry as any);
 ---
-<html>
-  <head>
-    <meta http-equiv="refresh" content={`0; url=${newPath}`} />
-  </head>
-  <body>
-    <StarlightPage frontmatter={{ title: "Acortador de enlaces", template:"splash"}}>
-      <p>Redirigiendo a <a href={newPath}>{newPath}</a></p>
-      <!-- <CustomComponent /> -->
-    </StarlightPage>
-  </body>
-</html>
-<!-- 
-<html>
-  <head>
-    <meta http-equiv="refresh" content={`0; url=${newPath}`} />
-  </head>
-  <body>
-  </body>
-</html> -->
+
+<StarlightPage
+  frontmatter={{
+    title: '',
+    banner:{
+      content: "Esta es una página oculta. Por favor, no compartas este enlace.",
+    },
+    template: "splash",
+    pagefind: false,
+    // prev: false,
+    // next: false,
+  }}
+>
+  <Content />
+</StarlightPage>
