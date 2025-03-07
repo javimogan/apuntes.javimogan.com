@@ -1,10 +1,10 @@
 ---
 title: DHCP y DNS
 id: 042f53de40
-lastUpdated: 2025-03-07T21:26:23.000Z
+lastUpdated: 2025-03-07T21:35:03.000Z
 pagefind: false
 ---
-# _Configuración e instalación de un servidor DHCP y la odisea del servidor DNS._
+# _Configuración e instalación de un servidor DHCP y DNS._
 
 ### Consideraciones previas
 #### 1. Fichero resolved.conf
@@ -425,5 +425,5 @@ pubDate: '16/02/2025 01:29'
 ---
 # Sistemas Operativos
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA4MDY2MTc5MV19
+eyJoaXN0b3J5IjpbLTE4MzcyMTQ4ODIsMjA4MDY2MTc5MV19
 -->
