@@ -11,7 +11,7 @@ export default defineConfig({
             description: "Apuntes varios",
             logo: {
                 src: "/public/favicon.svg",
-                alt: "Apuntes",
+                alt: "Logotipo de la página",
             },
             locales: {
                 root:{
