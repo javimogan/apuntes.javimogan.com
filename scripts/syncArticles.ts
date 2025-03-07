@@ -4,7 +4,7 @@ import fetch from "node-fetch";
 import matter from "gray-matter";
 import "dotenv/config";
 import moment from "moment-timezone";
-import crypto from 'crypto';
+import crypto from "crypto";
 const OWNER = "javimogan";
 const REPO = "contenidos";
 
@@ -36,13 +36,11 @@ const HEADERS = {
 const githubFiles: Set<string> = new Set();
 const downloadedImages: Set<string> = new Set();
 
-
-
 function generarHash(nombreArchivo) {
-    return crypto.createHash('md5') // O usa 'sha1' o 'sha256'
-                 .update(nombreArchivo)
-                 .digest('hex')
-                 .slice(0, 10); // Limitar la longitud del hash
+    return crypto.createHash("md5") // O usa 'sha1' o 'sha256'
+        .update(nombreArchivo)
+        .digest("hex")
+        .slice(0, 10); // Limitar la longitud del hash
 }
 // Obtener metadatos del archivo desde la API de GitHub
 const getGitHubMetadata = async (filePath: string) => {
@@ -145,7 +143,9 @@ const downloadFiles = async (url: string, localPath: string): Promise<void> => {
                 childrenFiles.push(filePath);
 
                 // Set hashId
-                data.id = generarHash(file.path);
+                if (!data.id) {
+                    data.id = generarHash(file.path);
+                }
                 // Set lastUpdated
                 data.lastUpdated = moment(metadata.updatedDate).toDate();
                 //Set default title
