@@ -8,13 +8,15 @@ jobs:
   prebuild:
     runs-on: ubuntu-latest
     steps:
-      # - name: 🔄 Clonar repositorio
-      #   uses: actions/checkout@v3
-      #   with:
-      #     token: ${{ secrets.TOKEN_GITHUB }}
+      - name: 🔄 Clonar repositorio
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.TOKEN_GITHUB }}  # Asegúrate de que tiene permisos de escritura
+          persist-credentials: false  # Evita conflictos de credenciales
+          fetch-depth: 0  # Obtiene todas las ramas
 
       - name: 🛠️ Instalar dependencias
-        run: npm install  # Si necesitas instalar paquetes
+        run: npm install
 
       - name: ⚙️ Ejecutar Prebuild
         run: npm run prebuild
@@ -28,7 +30,10 @@ jobs:
           if [[ -n $(git status --porcelain) ]]; then
             git add .
             git commit -m "🚀 Auto-update after prebuild"
-            git push
+
+            # Autenticación manual con token para hacer push
+            git remote set-url origin https://x-access-token:${{ secrets.TOKEN_GITHUB }}@github.com/${{ github.repository }}.git
+            git push origin HEAD:main
           else
             echo "✅ No hay cambios para commitear."
           fi
