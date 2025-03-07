@@ -29,19 +29,19 @@ jobs:
         env:
           TOKEN_GITHUB: ${{ secrets.TOKEN_GITHUB }}
 
-      # - name: 📝 Comprobar cambios en Git
-      #   run: |
-      #     git config --global user.name "GitHub Actions"
-      #     git config --global user.email "diazalonsojavi@gmail.com"
+      - name: 📝 Comprobar cambios en Git
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "diazalonsojavi@gmail.com"
 
-      #     # Verificar si hay cambios
-      #     if [[ -n $(git status --porcelain) ]]; then
-      #       git add .
-      #       git commit -m "🚀 Auto-update after prebuild"
+          # Verificar si hay cambios
+          if [[ -n $(git status --porcelain) ]]; then
+            git add .
+            git commit -m "🚀 Auto-update after prebuild"
 
-      #       # Autenticación manual con token para hacer push
-      #       git remote set-url origin https://x-access-token:${{ secrets.TOKEN_GITHUB }}@github.com/${{ github.repository }}.git
-      #       git push origin HEAD:main
-      #     else
-      #       echo "✅ No hay cambios para commitear."
-      #     fi
+            # Autenticación manual con token para hacer push
+            git remote set-url origin https://x-access-token:${{ secrets.TOKEN_GITHUB }}@github.com/${{ github.repository }}.git
+            git push origin HEAD:main
+          else
+            echo "✅ No hay cambios para commitear."
+          fi
