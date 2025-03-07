@@ -8,6 +8,7 @@ import crypto from 'crypto';
 const OWNER = "javimogan";
 const REPO = "contenidos";
 
+console.log("GOLA", process.env.TOKEN_GITHUB)
 const CONTENT_PATH = "docs";
 const PUBLIC_IMAGE_DIR = "/images/" + CONTENT_PATH;
 const PUBLIC_DEFAULT_IMAGE_DIR = "/images/default";
