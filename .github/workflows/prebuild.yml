@@ -15,9 +15,13 @@ jobs:
             fetch-depth: 0         # Fetch all history for .GitInfo and .Lastmod
       # - name: Install, build, and upload your site output
       #   uses: withastro/action@v2
-      # - name: 🛠️ Instalar dependencias
-      #   run: npm install
-
+      - name: 🛠️ Instalar dependencias
+        run: npm install
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+          cache: 'npm'
       # - name: ⚙️ Ejecutar Prebuild
       #   run: npm run prebuild
 
