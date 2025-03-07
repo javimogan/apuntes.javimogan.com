@@ -8,10 +8,10 @@ jobs:
   prebuild:
     runs-on: ubuntu-latest
     steps:
-      - name: 🔄 Clonar repositorio
-        uses: actions/checkout@v3
-        with:
-          token: ${{ secrets.TOKEN_GITHUB }}
+      # - name: 🔄 Clonar repositorio
+      #   uses: actions/checkout@v3
+      #   with:
+      #     token: ${{ secrets.TOKEN_GITHUB }}
 
       - name: 🛠️ Instalar dependencias
         run: npm install  # Si necesitas instalar paquetes
