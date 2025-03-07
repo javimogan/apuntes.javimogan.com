@@ -22,14 +22,14 @@ jobs:
       #   with:
       #     node-version: '20'
       #     cache: 'npm'
-      - name: test
-        run: env
       - name: ⚙️ Ejecutar Prebuild
         run: npm run prebuild
         env:
           TOKEN_GITHUB: ${{ secrets.TOKEN_GITHUB }}
 
       - name: 📝 Comprobar cambios en Git
+        env:
+          TOKEN_GITHUB: ${{ secrets.TOKEN_GITHUB }}
         run: |
           git config --global user.name "GitHub Actions"
           git config --global user.email "diazalonsojavi@gmail.com"
