@@ -1,7 +1,7 @@
 ---
 hidden: true
 id: 04ae679a11
-lastUpdated: 2025-03-08T16:18:04.000Z
+lastUpdated: 2025-03-08T16:19:36.000Z
 title: Configuración de Samba
 ---
 
@@ -17,7 +17,12 @@ Samba es una implementación libre del protocolo de archivos compartidos de Micr
 
 En la actualidad, Samab permite la integración de Windows con sistemas Linux/Unix en una misma red.
 
-Samba está formado por diferentes módulos para facilitar la configuración del protocolo 
+Samba está formado por diferentes módulos para facilitar la configuración del protocolo SMB/CIFS. Su núcleo está compuesto por tres demonios que se ejecutan siempre en un segundo plano:
+
+- **smbd**. Es el responsable de compartir archivos e imp
+- **nmdb**
+ **winbindd**
+
 
 ----------
 
@@ -208,5 +213,5 @@ O revisar los logs en:
 
 Con estos pasos, hemos configurado un servidor SAMBA en Ubuntu Server y accedido a sus recursos desde un cliente Ubuntu Desktop. Esta configuración permite compartir archivos de manera sencilla y eficiente en una red mixta de Linux y Windows.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4ODQ4ODI1NzBdfQ==
+eyJoaXN0b3J5IjpbLTE3ODgxNTQxNTVdfQ==
 -->
