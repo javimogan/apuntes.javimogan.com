@@ -1,6 +1,6 @@
 ---
 id: d789c205ac
-lastUpdated: 2025-03-08T16:53:33.000Z
+lastUpdated: 2025-03-08T16:55:05.000Z
 title: 1 Servidor de archivos
 ---
 Para hacer uso de Samba como servidor de archivos, se deben serguir los siguientes pasos:
@@ -66,7 +66,7 @@ sudo nano /etc/samba/smb.conf
 Añadimos al final del archivo:
 
 ``` "/srv/samba/compartido" "0775"
-[nombre] <-- Asignar un nombre a la sección
+[Compartido] <-- Asignar un nombre a la sección
    comment = Carpeta Compartida
    path = /srv/samba/compartido
    browsable = yes
@@ -77,7 +77,7 @@ Añadimos al final del archivo:
 ```
 Dónde:
 
-- **[nombre]**. Nombre de la sección.
+- **[Compartido]**. Nombre de la sección.
 - **comment**. Descripción del contenido de la carpeta.
 - **path**. Ruta absoluta del directorio que vamos a compartir.
 - **browsable**. Para poder navegar entre las subcarpetas.
@@ -133,68 +133,60 @@ En el cliente Ubuntu, instalamos los paquetes necesarios para acceder a los recu
 sudo apt install smbclient cifs-utils -y
 ```
 
-### 3.2. Acceder a la carpeta compartida
+### 2.2. Acceder a la carpeta compartida
 
 Desde la terminal, podemos listar los recursos compartidos en el servidor:
 
 ```bash
-smbclient -L //IP_DEL_SERVIDOR -N
-
+smbclient -L IP_DEL_SERVIDOR -N
 ```
 
 Para conectarnos a la carpeta compartida:
 
 ```bash
 smbclient //IP_DEL_SERVIDOR/Compartido -N
-
 ```
 
 También se puede acceder gráficamente abriendo **Archivos (Nautilus)** y escribiendo en la barra de direcciones:
 
 ```
 smb://IP_DEL_SERVIDOR/Compartido
-
 ```
 
-### 3.3. Montar el recurso compartido en el sistema de archivos
+### 2.3. Montar el recurso compartido en el sistema de archivos
 
 Creamos un punto de montaje:
 
 ```bash
 mkdir -p ~/samba_compartido
-
 ```
 
 Montamos la carpeta compartida:
 
 ```bash
 sudo mount -t cifs //IP_DEL_SERVIDOR/Compartido ~/samba_compartido -o guest,uid=$(id -u),gid=$(id -g)
-
 ```
 
 Para montar automáticamente al inicio, editamos el archivo **/etc/fstab**:
 
 ```bash
 sudo nano /etc/fstab
-
 ```
 
 Añadimos la siguiente línea al final:
 
 ```
 //IP_DEL_SERVIDOR/Compartido  /home/usuario/samba_compartido  cifs  guest,uid=1000,gid=1000  0  0
-
 ```
 
 Guardamos y aplicamos los cambios con:
 
 ```bash
 sudo mount -a
-
 ```
 
 
-## 4. Pruebas y solución de problemas
+## 3. Pruebas y solución de problemas
 
 ### 4.1. Verificar que el servicio está corriendo
 
@@ -228,5 +220,5 @@ O revisar los logs en:
 
 Con estos pasos, hemos configurado un servidor SAMBA en Ubuntu Server y accedido a sus recursos desde un cliente Ubuntu Desktop. Esta configuración permite compartir archivos de manera sencilla y eficiente en una red mixta de Linux y Windows.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTUzNTg1MTYyM119
+eyJoaXN0b3J5IjpbLTEzNDYxODM4NDZdfQ==
 -->
