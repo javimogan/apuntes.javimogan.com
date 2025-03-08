@@ -1,10 +1,9 @@
 ---
 hidden: true
-id: e450e1a75a
-lastUpdated: 2025-03-08T16:10:20.000Z
-title: Samba
+id: 04ae679a11
+lastUpdated: 2025-03-08T16:11:53.000Z
+title: Configuración de Samba
 ---
-# Configuración de SAMBA en Ubuntu Server y Ubuntu Desktop
 
 ## 1. ¿Qué es SAMBA?
 
@@ -199,5 +198,5 @@ O revisar los logs en:
 
 Con estos pasos, hemos configurado un servidor SAMBA en Ubuntu Server y accedido a sus recursos desde un cliente Ubuntu Desktop. Esta configuración permite compartir archivos de manera sencilla y eficiente en una red mixta de Linux y Windows.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4OTMwNTM1OTgsMTM3NjA2Mzk2NF19
+eyJoaXN0b3J5IjpbLTE0OTU4NjA5MTBdfQ==
 -->
