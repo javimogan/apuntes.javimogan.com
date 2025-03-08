@@ -1,6 +1,6 @@
 ---
 id: d789c205ac
-lastUpdated: 2025-03-08T16:41:13.000Z
+lastUpdated: 2025-03-08T16:42:45.000Z
 title: 1 Servidor de archivos
 ---
 Para hacer uso de Samba como servidor de archivos, se deben serguir los siguientes pasos:
@@ -73,12 +73,20 @@ Añadimos al final del archivo:
    read only = no
    writable = yes
    guest ok = yes
-   create mask = 0777
-   directory mask = 0777
-
+   create mask = 0775
+   directory mask = 0775
 ```
+Dónde:
 
-Guardamos los cambios (Ctrl+X, luego Y y Enter).
+- **[nombre]**
+- **comment**
+- **path**
+- **browsable**
+- **read only**
+- **writable**
+- **guest ok**
+- **create mask** 
+- ****
 
 ### 2.5. Reiniciar el servicio de SAMBA
 
@@ -205,5 +213,5 @@ O revisar los logs en:
 
 Con estos pasos, hemos configurado un servidor SAMBA en Ubuntu Server y accedido a sus recursos desde un cliente Ubuntu Desktop. Esta configuración permite compartir archivos de manera sencilla y eficiente en una red mixta de Linux y Windows.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwODEzMTE3MDZdfQ==
+eyJoaXN0b3J5IjpbLTEzMjg2MDA0NDVdfQ==
 -->
