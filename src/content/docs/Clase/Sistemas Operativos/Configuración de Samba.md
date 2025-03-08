@@ -1,13 +1,17 @@
 ---
 hidden: true
 id: 04ae679a11
-lastUpdated: 2025-03-08T16:11:53.000Z
+lastUpdated: 2025-03-08T16:13:27.000Z
 title: Configuración de Samba
 ---
 
 ## 1. ¿Qué es SAMBA?
 
 SAMBA es una implementación de código abierto del protocolo SMB/CIFS, que permite compartir archivos e impresoras entre sistemas Windows y Linux. Con SAMBA, un servidor Linux puede actuar como un servidor de archivos compatible con Windows, permitiendo a los usuarios acceder a recursos compartidos.
+
+El uso compartido de archivos es una de las acciones más comunes e interesantes que se puede realizar en una organización.
+
+Compartir ficheros es muy sencillo gracias al uso de Samba. Esta herramienta nos permite compartir varios recursos de un equipo  para que varios usuarios, tanto desde Windwo
 
 ----------
 
@@ -198,5 +202,5 @@ O revisar los logs en:
 
 Con estos pasos, hemos configurado un servidor SAMBA en Ubuntu Server y accedido a sus recursos desde un cliente Ubuntu Desktop. Esta configuración permite compartir archivos de manera sencilla y eficiente en una red mixta de Linux y Windows.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0OTU4NjA5MTBdfQ==
+eyJoaXN0b3J5IjpbOTcyMDc4MDMxXX0=
 -->
