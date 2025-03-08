@@ -1,0 +1,11 @@
+---
+import Default from "@astrojs/starlight/components/ContentPanel.astro";
+const { id } = Astro.locals.starlightRoute.entry.data;
+---
+
+<Default>
+    <slot />
+    <div class="text-gray-700">
+        {id}
+    </div>
+</Default>

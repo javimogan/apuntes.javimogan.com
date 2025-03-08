@@ -18,6 +18,7 @@
 	font-display: swap;
 }
 
+
 body {
 	font-family: 'Atkinson', sans-serif;
 	margin: 0;
@@ -28,4 +29,8 @@ body {
 	overflow-wrap: break-word;
 	font-size: 16px;
 	line-height: 1.7;
+}
+
+code {
+	border-radius: 4px;
 }

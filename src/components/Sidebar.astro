@@ -2,7 +2,12 @@
 import Default from "@astrojs/starlight/components/Sidebar.astro";
 
 import type { StarlightRouteData } from "@astrojs/starlight/route-data";
+import { getCollection } from "astro:content";
+import { fade } from "astro:transitions";
+import moment from "moment-timezone";
 
+
+const files = await getCollection("docs");
 // Eliminar el primer grupo si solo tiene un elemento
 function promoteRelevantGroup(
     entries: StarlightRouteData["sidebar"],
@@ -26,6 +31,13 @@ function filterSidebar(
     return entries
         .map((entry) => {
             if (entry.type === "link") {
+                // Get content of the link
+                const _file = files.find((f)=> `/${f.id}/` === entry.href)
+                if(_file && _file.data.lastUpdated && typeof _file.data.lastUpdated !== 'boolean'){
+                    if (moment(_file.data.lastUpdated).isAfter(moment().subtract(1, 'week'))){
+                        entry.badge = {text: "Nuevo",variant:'caution'};
+                    }
+                }
                 return entry.href.startsWith("/" + path) ? entry : null;
             } else if (entry.type === "group") {
                 const filteredEntries = filterSidebar(entry.entries, path);
@@ -79,7 +91,7 @@ function sortSidebar(
             });
         });
 }
-Astro.locals.starlightRoute.sidebar = sortSidebar(filteredSidebar);
+// Astro.locals.starlightRoute.sidebar = sortSidebar(filteredSidebar);
 
 Astro.locals.starlightRoute.sidebar = filteredSidebar;
 ---

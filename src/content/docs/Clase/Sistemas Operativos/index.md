@@ -18,7 +18,7 @@ Las demás líneas, pueden estar comentadas.
 
 **Contenedores en Docker**
 No afecta en nada, pero podemos limpiar TODOS los contenedores de Docker con
-```bash
+```bash "stop" "prune"
 docker container stop $(docker container ls -aq)
 docker container prune
 ```

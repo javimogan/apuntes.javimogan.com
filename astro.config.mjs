@@ -10,8 +10,13 @@ export default defineConfig({
             title: "Apuntes",
             description: "Apuntes varios",
             logo: {
-                src: "/public/favicon.svg",
+                light: "/public/favicon.svg",
+                dark: "/public/favicon-dark.svg",
                 alt: "Logotipo de la página",
+            },
+            expressiveCode: {
+                themes: ['github-dark', 'github-light'],
+                defaultLocale: 'es-ES'
             },
             locales: {
                 root:{
@@ -28,6 +33,7 @@ export default defineConfig({
             components: {
                 Sidebar: "./src/components/Sidebar.astro",
                 Footer: "./src/components/Footer.astro",
+                ContentPanel: "./src/components/ContentPanel.astro",
             },
             customCss: ["./src/tailwind.css"],
         }),
