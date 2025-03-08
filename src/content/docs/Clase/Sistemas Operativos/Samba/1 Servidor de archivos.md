@@ -1,6 +1,6 @@
 ---
 id: d789c205ac
-lastUpdated: 2025-03-08T16:28:54.000Z
+lastUpdated: 2025-03-08T16:30:26.000Z
 title: 1 Servidor de archivos
 ---
 Para hacer uso de Samba como servidor de archivos, se deben serguir los siguientes pasos:
@@ -30,7 +30,7 @@ sudo apt install samba -y
 
 El paquete Samba define una configuración mínima durante la instalación inicial. No obstante, se debe adaptar dicha configuración inicial a las necesidades de la organización. Durante la instalación de Samba, se creará un archivo en ``/etc/samba/`` denominado ``smb.conf``, que contiene todas las configuraciones necesarias del servidor.
 
-### 2.3. Crear un directorio compartido
+### 1.3. Crear un directorio compartido
 
 Creamos una carpeta para compartir archivos:
 
@@ -197,5 +197,5 @@ O revisar los logs en:
 
 Con estos pasos, hemos configurado un servidor SAMBA en Ubuntu Server y accedido a sus recursos desde un cliente Ubuntu Desktop. Esta configuración permite compartir archivos de manera sencilla y eficiente en una red mixta de Linux y Windows.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQxNTc3NTM3OV19
+eyJoaXN0b3J5IjpbLTEwMzI2NDkzNTZdfQ==
 -->
