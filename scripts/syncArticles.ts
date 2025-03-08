@@ -36,7 +36,7 @@ const HEADERS = {
 const githubFiles: Set<string> = new Set();
 const downloadedImages: Set<string> = new Set();
 
-function generarHash(nombreArchivo) {
+function generarHash(nombreArchivo: string) {
     return crypto.createHash("md5") // O usa 'sha1' o 'sha256'
         .update(nombreArchivo)
         .digest("hex")
@@ -138,6 +138,21 @@ const downloadFiles = async (url: string, localPath: string): Promise<void> => {
 
                 // Ignorar archivos en borrador
                 if (data.draft === true) continue;
+                // Si es oculto, arreglarlo
+
+                if (file.path === "Clase/Arduino/Oculto.md") {
+                    if (data.hidden !== undefined) {
+                        if (
+                            data.hidden === true &&
+                            (data.sidebar === undefined ||
+                                data.sidebar?.hidden !== true)
+                        ) {
+                            data.sidebar = { ...data.sidebar, hidden: true };
+                        }
+                        // remove hidden
+                        delete data.hidden;
+                    }
+                }
 
                 githubFiles.add(filePath);
                 childrenFiles.push(filePath);
