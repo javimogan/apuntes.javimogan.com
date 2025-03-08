@@ -1,0 +1,99 @@
+---
+import StarlightPage from "@astrojs/starlight/components/StarlightPage.astro";
+import { getCollection } from "astro:content";
+import { LinkCard } from "@astrojs/starlight/components";
+import { Card, CardGrid } from "@astrojs/starlight/components";
+import { LinkButton } from "@astrojs/starlight/components";
+import type { RenderedContent } from "astro:content";
+import { undefined } from "astro:schema";
+
+const docs = (await getCollection("docs")).filter(
+    (d) => !d.data.sidebar.hidden,
+);
+
+interface Doc {
+    path: string;
+    name: string;
+    data: any;
+    rendered: RenderedContent | undefined;
+}
+const allContent = docs.map(
+    (d) =>
+        ({
+            path: d.filePath,
+            name: d.id,
+            rendered: d.rendered,
+            data: d.data,
+        }) as Doc,
+);
+
+let files = allContent;
+
+// Función para extraer los niveles del path
+const structure:
+    | { [s: string]: Map<string, { path: string; name: string }> }
+    | ArrayLike<unknown> = {};
+
+files.forEach((file) => {
+    const parts = file.path.split("/");
+    const docType = parts[3]; // Clase, Proyectos, etc.
+    const category = parts[4]; // Arduino, Proyecto 1, etc.
+
+    if (docType && category && category !== "index.md") {
+        if (!structure[docType]) {
+            structure[docType] = new Map<
+                string,
+                { path: string; name: string }
+            >();
+        }
+        if (!structure[docType].has(category)) {
+            structure[docType].set(category, {
+                name: category,
+                path: file.name.split("/").slice(0, 2).join("/"),
+            });
+        }
+    }
+});
+const grids = Object.entries(structure).map(([key, value]) => {
+    const _items: { path: string; name: string }[] = [];
+    value.forEach((v) => {
+        _items.push(v);
+    });
+    return {
+        id: key,
+        gPath: _items[0].path.split("/").slice(0, 1).join("/"),
+        items: _items,
+    };
+});
+---
+
+<StarlightPage
+    frontmatter={{
+        title: "Inicio",
+        description: "Todo tipo de apuntes",
+        template: "splash",
+        pagefind: false,
+        prev: false,
+        next: false,
+    }}
+>
+    <CardGrid>
+        {
+            grids.map((g) => (
+                <Card title={g.id} icon="open-book">
+                    {/* <p>Artículoss</p> */}
+                    {g.items.map((entry) => (
+                        <LinkCard
+                            title={entry.name}
+                            description=""
+                            href={`${entry.path}`}
+                        />
+                    ))}
+                    <LinkButton class="w-full justify-center" href={`/${g.gPath}`} variant="secondary">
+                        Ver todo
+                    </LinkButton>
+                </Card>
+            ))
+        }
+    </CardGrid>
+</StarlightPage>
