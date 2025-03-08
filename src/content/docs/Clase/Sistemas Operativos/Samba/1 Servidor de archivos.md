@@ -1,6 +1,6 @@
 ---
 id: d789c205ac
-lastUpdated: 2025-03-08T16:39:41.000Z
+lastUpdated: 2025-03-08T16:41:13.000Z
 title: 1 Servidor de archivos
 ---
 Para hacer uso de Samba como servidor de archivos, se deben serguir los siguientes pasos:
@@ -65,11 +65,12 @@ sudo nano /etc/samba/smb.conf
 
 Añadimos al final del archivo:
 
-```
-[Compartido]
+``` "/srv/samba/compartido" "0775"
+[nombre] <-- Asignar un nombre a la sección
    comment = Carpeta Compartida
    path = /srv/samba/compartido
    browsable = yes
+   read only = no
    writable = yes
    guest ok = yes
    create mask = 0777
@@ -204,5 +205,5 @@ O revisar los logs en:
 
 Con estos pasos, hemos configurado un servidor SAMBA en Ubuntu Server y accedido a sus recursos desde un cliente Ubuntu Desktop. Esta configuración permite compartir archivos de manera sencilla y eficiente en una red mixta de Linux y Windows.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjM4NTA1ODk5XX0=
+eyJoaXN0b3J5IjpbLTEwODEzMTE3MDZdfQ==
 -->
