@@ -1,6 +1,6 @@
 ---
 id: d789c205ac
-lastUpdated: 2025-03-08T16:48:55.000Z
+lastUpdated: 2025-03-08T16:50:28.000Z
 title: 1 Servidor de archivos
 ---
 Para hacer uso de Samba como servidor de archivos, se deben serguir los siguientes pasos:
@@ -95,7 +95,14 @@ En primer lugar, se crean las cuentas de usuarios en Linux. A continuación, se 
 adduser usuario_samba
 smbpasswd -a usuario_samba
 ```
-Es frecuente, que la mayoría de las cuentas de usuario que se utilizan para acceder hacia recursos compartidos en Samba
+Es frecuente, que la mayoría de las cuentas de usuario que se utilizan para acceder hacia recursos compartidos en Samba no requieran acceso con el comando **passwd** y se deberá definir ``/sbin/nologin`` como intérprete de comandos para la cuenta de usuario en cuestión.
+
+```bash
+adduser -s /sbin/nologin usuario_samba
+smbpasswd -a usuario_samba
+```
+
+Si por 
 
 ### 1.6. Reiniciar el servicio de SAMBA
 
@@ -221,5 +228,5 @@ O revisar los logs en:
 
 Con estos pasos, hemos configurado un servidor SAMBA en Ubuntu Server y accedido a sus recursos desde un cliente Ubuntu Desktop. Esta configuración permite compartir archivos de manera sencilla y eficiente en una red mixta de Linux y Windows.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTc3NzY4OTQ5N119
+eyJoaXN0b3J5IjpbLTkxODQ0OTAzNF19
 -->
