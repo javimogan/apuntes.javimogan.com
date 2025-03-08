@@ -1,9 +1,7 @@
 ---
 id: 14dfb0d536
-lastUpdated: 2025-03-07T15:53:47.000Z
+lastUpdated: 2025-03-07T23:29:33.000Z
 title: Bloqueante
-sidebar:
-  hidden: true
 ---
 # Uso de `millis()` en Arduino para el Control de Tiempos
 
@@ -36,6 +34,7 @@ void loop() {
     // Bloquea el código 3 segundos
     delay(3000);
 }
+
 ```
 
 El problema con este enfoque es que **el microcontrolador no puede hacer nada más** mientras espera en `delay()`. Si quisieras realizar otra acción, tendrías que esperar a que termine el `delay()`.
@@ -96,7 +95,7 @@ void loop() {
 
 ```
 
-### 🔹 Ventajas de `millis()`
+### Ventajas de `millis()`
 
 -   Permite ejecutar otras tareas en paralelo.
 -   No bloquea el microcontrolador como `delay()`.
@@ -140,7 +139,7 @@ void loop() {
 
 ```
 
-### 🔹 Explicación
+### Explicación
 
 1.  Se configura el **botón con `INPUT_PULLUP`** para evitar una resistencia externa.
 2.  Se comprueba si el botón está presionado (`LOW`).
@@ -149,5 +148,5 @@ void loop() {
 5.  Todo esto ocurre sin bloquear el programa.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3OTkxMTE3MThdfQ==
+eyJoaXN0b3J5IjpbLTU2MjQ5NzI0MCwtMTc5OTExMTcxOF19
 -->
