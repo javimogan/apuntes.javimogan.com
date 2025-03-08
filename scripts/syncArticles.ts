@@ -152,6 +152,12 @@ const downloadFiles = async (url: string, localPath: string): Promise<void> => {
                         // remove hidden
                         delete data.hidden;
                     }
+                    // Si el fichero es oculto, que no tenga prev, next ni se pueda buscar
+                    if(data.sidebar && data.sidebar.hidden === true){
+                        data.prev = null;
+                        data.next = null;
+                        data.pagefind = false;
+                    }
                 }
 
                 githubFiles.add(filePath);
