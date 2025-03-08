@@ -1,17 +1,17 @@
 ---
-title: Introducción a Samba
+title: Servidor de archivos. Samba
 id: d789c205ac
-lastUpdated: 2025-03-08T16:56:38.000Z
+lastUpdated: 2025-03-08T16:57:52.000Z
 ---
 
 ## 1. Instalar el servidor Samba.
 
 Para hacer uso de Samba como servidor de archivos, se deben serguir los siguientes pasos:
- Instalar el servidor Samba.
-2. Configurar el servidor según las necesidades.
-3. Añadir usuarios para acceder a los recursos compartidos.
-4. Dar los permisos a las carpetas compartidas.
-5. Arrancar el servidor Samba.
+- Instalar el servidor Samba.
+- Configurar el servidor según las necesidades.
+- Añadir usuarios para acceder a los recursos compartidos.
+- Dar los permisos a las carpetas compartidas.
+- Arrancar el servidor Samba.
 
 ### 1.1. Actualizar el sistema
 
@@ -213,5 +213,5 @@ O revisar los logs en:
 /var/log/samba/
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjM2NTU5ODk0XX0=
+eyJoaXN0b3J5IjpbLTkxMDUzNTgwOV19
 -->
