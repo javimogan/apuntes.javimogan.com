@@ -1,7 +1,7 @@
 ---
 hidden: true
 id: 04ae679a11
-lastUpdated: 2025-03-08T16:16:31.000Z
+lastUpdated: 2025-03-08T16:18:04.000Z
 title: Configuración de Samba
 ---
 
@@ -15,7 +15,9 @@ Compartir ficheros es muy sencillo gracias al uso de Samba. Esta herramienta nos
 
 Samba es una implementación libre del protocolo de archivos compartidos de Microsoft Windows (antiguamente era conocido por SMB, renombrado recientemente como CIFS) para sistemas de tipo UNIX. Con esta herramienta, es posible que ordenadores con Linux, MacOS o Unix, en general, actúen como servidores o clientes en redes de Windows.
 
-En la actualidad, Samab permite
+En la actualidad, Samab permite la integración de Windows con sistemas Linux/Unix en una misma red.
+
+Samba está formado por diferentes módulos para facilitar la configuración del protocolo 
 
 ----------
 
@@ -206,5 +208,5 @@ O revisar los logs en:
 
 Con estos pasos, hemos configurado un servidor SAMBA en Ubuntu Server y accedido a sus recursos desde un cliente Ubuntu Desktop. Esta configuración permite compartir archivos de manera sencilla y eficiente en una red mixta de Linux y Windows.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQ2ODM0ODIxMF19
+eyJoaXN0b3J5IjpbLTE4ODQ4ODI1NzBdfQ==
 -->
