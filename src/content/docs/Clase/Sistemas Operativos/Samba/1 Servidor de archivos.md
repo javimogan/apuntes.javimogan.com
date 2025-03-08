@@ -1,16 +1,17 @@
 ---
+title: Introducción a Samba
 id: d789c205ac
-lastUpdated: 2025-03-08T16:55:05.000Z
-title: 1 Servidor de archivos
+lastUpdated: 2025-03-08T16:56:38.000Z
 ---
+
+## 1. Instalar el servidor Samba.
+
 Para hacer uso de Samba como servidor de archivos, se deben serguir los siguientes pasos:
-1. Instalar el servidor Samba.
+ Instalar el servidor Samba.
 2. Configurar el servidor según las necesidades.
 3. Añadir usuarios para acceder a los recursos compartidos.
 4. Dar los permisos a las carpetas compartidas.
 5. Arrancar el servidor Samba.
-
-## 1. Instalar el servidor Samba.
 
 ### 1.1. Actualizar el sistema
 
@@ -188,37 +189,29 @@ sudo mount -a
 
 ## 3. Pruebas y solución de problemas
 
-### 4.1. Verificar que el servicio está corriendo
+### 3.1. Verificar que el servicio está corriendo
 
 ```bash
 sudo systemctl status smbd
-
 ```
 
-### 4.2. Verificar la configuración de SAMBA
+### 3.2. Verificar la configuración de SAMBA
 
 ```bash
 testparm
-
 ```
 
-### 4.3. Revisar logs en caso de problemas
+### 3.3. Revisar logs en caso de problemas
 
 ```bash
 sudo journalctl -u smbd --since "1 hour ago"
-
 ```
 
 O revisar los logs en:
 
 ```bash
 /var/log/samba/
-
 ```
-
-## 5. Conclusión
-
-Con estos pasos, hemos configurado un servidor SAMBA en Ubuntu Server y accedido a sus recursos desde un cliente Ubuntu Desktop. Esta configuración permite compartir archivos de manera sencilla y eficiente en una red mixta de Linux y Windows.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzNDYxODM4NDZdfQ==
+eyJoaXN0b3J5IjpbNjM2NTU5ODk0XX0=
 -->

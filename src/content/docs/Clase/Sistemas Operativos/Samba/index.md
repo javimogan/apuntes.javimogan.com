@@ -1,7 +1,7 @@
 ---
+title: Introducción a Samba
 id: 8d71cbcaf6
-lastUpdated: 2025-03-08T16:25:48.000Z
-title: index
+lastUpdated: 2025-03-08T16:56:39.000Z
 pagefind: false
 ---
 ## ¿Qué es SAMBA?
@@ -22,5 +22,5 @@ Samba está formado por diferentes módulos para facilitar la configuración del
 - **nmdb**. Entiende y responde a las peticiones de servicio de nombres NetBIOS. El puerto predeterminado en el que el servidor escucha por tráfico NMB es el puerto UDP 137. Este demonio es controlado por el servicio **smb** y se configura con el archivo **smb.conf**.
  **winbindd**. Resuelve la información de grupos y usuarios en un servidor Windows NT y la hace entendible para Unix/Linux. Esto permite que los usuarios del dominio Windows NT aparezcan y operen como usuarios UNIX en una máquina UNIX.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2NjA3Mjk1NzJdfQ==
+eyJoaXN0b3J5IjpbMTAyMTU2NTMyMF19
 -->
