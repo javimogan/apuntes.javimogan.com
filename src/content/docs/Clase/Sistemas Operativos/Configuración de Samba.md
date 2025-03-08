@@ -1,7 +1,7 @@
 ---
 hidden: true
 id: 04ae679a11
-lastUpdated: 2025-03-08T16:21:08.000Z
+lastUpdated: 2025-03-08T16:22:40.000Z
 title: Configuración de Samba
 ---
 
@@ -19,9 +19,9 @@ En la actualidad, Samab permite la integración de Windows con sistemas Linux/Un
 
 Samba está formado por diferentes módulos para facilitar la configuración del protocolo SMB/CIFS. Su núcleo está compuesto por tres demonios que se ejecutan siempre en un segundo plano:
 
-- **smbd**. Es el responsable de compartir archivos y servicios de impresión a clientes Windows. Además, es el encargado de la autenticación de usuarios, del bloqueo de recursos y de compartir datos a través del protocolo SMB. Los puertos predeterminados en los que el servidor escucha por tráfico SMB son los TCP 139 y 445. Es configurable desd
-- **nmdb**
- **winbindd**
+- **smbd**. Es el responsable de compartir archivos y servicios de impresión a clientes Windows. Además, es el encargado de la autenticación de usuarios, del bloqueo de recursos y de compartir datos a través del protocolo SMB. Los puertos predeterminados en los que el servidor escucha por tráfico SMB son los TCP 139 y 445. Es configurable desde **smbd.conf**.
+- **nmdb**. Entiende y responde a las peticiones de servicio de nombres NetBIOS. El puerto predeterminado en el que el servidor escucha por tráfico NMB es el puerto UDP 137. Este demonio es controlado por el servicio **smb** y se configura con el archivo **smb.conf**.
+ **winbindd**. Resuelve la información de grupos y usuarios en un servidor Windows NT y la hace entendible para Unix/Linux
 
 
 ----------
@@ -213,5 +213,5 @@ O revisar los logs en:
 
 Con estos pasos, hemos configurado un servidor SAMBA en Ubuntu Server y accedido a sus recursos desde un cliente Ubuntu Desktop. Esta configuración permite compartir archivos de manera sencilla y eficiente en una red mixta de Linux y Windows.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwNjg4Mjk3MDVdfQ==
+eyJoaXN0b3J5IjpbNzgwNTg0ODA4XX0=
 -->
