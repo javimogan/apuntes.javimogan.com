@@ -1,6 +1,6 @@
 ---
 id: d789c205ac
-lastUpdated: 2025-03-08T16:35:03.000Z
+lastUpdated: 2025-03-08T16:36:36.000Z
 title: 1 Servidor de archivos
 ---
 Para hacer uso de Samba como servidor de archivos, se deben serguir los siguientes pasos:
@@ -41,15 +41,15 @@ sudo mkdir -p /srv/samba/compartido
 Al crear una carpeta, los permisos por defecto del directorio son ``755`` (``rwxr-xr-x``) y que pertenecen al usuario con el que lo hayamos creado, y por tanto, ningún otro usuario (execto root) podrá escribir en ellos. Por ello, debemos modificar los permisos de dicha carpeta mediante el comando ``chmod``.
 
 Además, si queremos compartir la carpeta de forma pública, con permisos de lectura y escritura y sin requerir contraseña para su acceso. El directorio deberá tener todos los permisos.
-Asignamos los permisos adecuados:
-
 ```bash
-sudo chown -R nobody:nogroup /srv/samba/compartido
 sudo chmod -R 777 /srv/samba/compartido
-
 ```
 
-### 2.4. Configurar SAMBA
+### 1.4. Configurar SAMBA
+
+Una vez se ha creado la carpeta, comenzamos a modificar el fichero ``/etc/samba/smb.conf``. Este fichero sólo puede ser modificado por el usuario administrador (u otros usuarios con los mismos permisos).
+
+El fichero **smb.c
 
 Editamos el archivo de configuración:
 
@@ -199,5 +199,5 @@ O revisar los logs en:
 
 Con estos pasos, hemos configurado un servidor SAMBA en Ubuntu Server y accedido a sus recursos desde un cliente Ubuntu Desktop. Esta configuración permite compartir archivos de manera sencilla y eficiente en una red mixta de Linux y Windows.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjAyMTIzMDMyNV19
+eyJoaXN0b3J5IjpbOTI3NjQ2NjIwXX0=
 -->
