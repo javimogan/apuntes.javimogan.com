@@ -83,7 +83,7 @@ const grids = Object.entries(structure).map(([key, value]) => {
                     {/* <p>Artículoss</p> */}
                     {g.items.map((entry) => (
                         <LinkCard
-                            title={entry.name}
+                            title={entry.name.replaceAll(".md", "").replaceAll("mdx", "")}
                             description=""
                             href={`${entry.path}`}
                         />

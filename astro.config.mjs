@@ -5,6 +5,7 @@ import tailwind from "@astrojs/tailwind";
 
 // https://astro.build/config
 export default defineConfig({
+    site: 'https://apuntes.javimogan.com',
     integrations: [
         starlight({
             title: "Apuntes",
@@ -33,7 +34,8 @@ export default defineConfig({
             components: {
                 Sidebar: "./src/components/Sidebar.astro",
                 Footer: "./src/components/Footer.astro",
-                ContentPanel: "./src/components/ContentPanel.astro",
+                MarkdownContent: "./src/components/MarkdownContent.astro",
+                LastUpdated: "./src/components/LastUpdated.astro",
             },
             customCss: ["./src/tailwind.css"],
         }),

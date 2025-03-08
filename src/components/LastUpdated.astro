@@ -1,0 +1,7 @@
+---
+import Default from "@astrojs/starlight/components/LastUpdated.astro";
+const { id } = Astro.locals.starlightRoute.entry.data;
+---
+
+<Default />
+{id && <p><a href={`/${id}`} rel="nofollow noreferrer noopener" >#{id}</a></p>}
