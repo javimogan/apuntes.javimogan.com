@@ -1,0 +1,52 @@
+---
+import {
+    CardGrid,
+    LinkCard,
+} from "@astrojs/starlight/components";
+import { getCollection } from "astro:content";
+const { filePath, id: entryId, body } = Astro.locals.starlightRoute.entry;
+// Verificar si el archivo es un índice
+const isIndex = filePath.endsWith("index.md") || filePath.endsWith("index.mdx");
+
+const docs = (await getCollection("docs")).filter(
+    (d) => !d.data.sidebar.hidden,
+);
+const currentLevel = entryId.split("/").length;
+const allContent = docs
+    .filter((d) => d.data.sidebar.hidden === false)
+    //Quedarse con entradas en el mismo nivel y hermanos
+    .filter(
+        (d) =>
+            d.id.split("/").slice(0, currentLevel).join("/") ===
+            entryId.split("/").slice(0, currentLevel).join("/"),
+    )
+    //Quedarse solo con los index
+    // .filter((d) => d.filePath?.endsWith("index.md") || d.filePath?.endsWith("index.mdx"))
+    //Eliminar la entrada actual
+    .filter((d) => d.id !== entryId)
+    //Limit to 10
+    .slice(0, 10)
+    .map((d) => ({ id: d.id, title: d.data.title, filePath: d.filePath }));
+---
+
+{
+    isIndex && allContent.length > 0 && body && body.length > 0 && (
+        <hr class="!mt-12" />
+    )
+}
+{
+    isIndex && allContent.length > 0 && (
+        <section>
+            <h2>Artículos relacionados</h2>
+            <CardGrid>
+                {allContent.map((aC) => (
+                    <LinkCard
+                        title={aC.title}
+                        description=""
+                        href={`/${aC.id}`}
+                    />
+                ))}
+            </CardGrid>
+        </section>
+    )
+}

@@ -2,6 +2,7 @@
 import StarlightPage from "@astrojs/starlight/components/StarlightPage.astro";
 import { render } from "astro:content";
 import { getCollection } from "astro:content";
+import RelatedContent from "../components/RelatedContent.astro";
 
 // Definir las rutas dinámicas en Astro
 export async function getStaticPaths() {
@@ -31,9 +32,10 @@ const { Content } = await render(entry as any);
 
 <StarlightPage
   frontmatter={{
-    title: '',
-    banner:{
-      content: "Esta es una página oculta. Por favor, no compartas este enlace.",
+    title: "",
+    banner: {
+      content:
+        "Esta es una página oculta. Por favor, no compartas este enlace.",
     },
     template: "splash",
     pagefind: false,
