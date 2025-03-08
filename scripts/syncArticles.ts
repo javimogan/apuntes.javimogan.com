@@ -154,8 +154,8 @@ const downloadFiles = async (url: string, localPath: string): Promise<void> => {
                     }
                     // Si el fichero es oculto, que no tenga prev, next ni se pueda buscar
                     if(data.sidebar && data.sidebar.hidden === true){
-                        data.prev = null;
-                        data.next = null;
+                        data.prev = false;
+                        data.next = false;
                         data.pagefind = false;
                     }
                 }
