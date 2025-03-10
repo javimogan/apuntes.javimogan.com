@@ -1,7 +1,7 @@
 ---
 title: Servidor de archivos. Samba
 id: d789c205ac
-lastUpdated: 2025-03-08T16:57:52.000Z
+lastUpdated: 2025-03-10T19:45:26.000Z
 ---
 
 ## 1. Instalar el servidor Samba.
@@ -43,7 +43,7 @@ Al crear una carpeta, los permisos por defecto del directorio son ``755`` (``rwx
 
 Además, si queremos compartir la carpeta de forma pública, con permisos de lectura y escritura y sin requerir contraseña para su acceso. El directorio deberá tener todos los permisos.
 ```bash
-sudo chmod -R 777 /srv/samba/compartido
+sudo chmod -R 777 /srv/samba/publica
 ```
 
 ### 1.4. Configurar SAMBA
@@ -66,10 +66,11 @@ sudo nano /etc/samba/smb.conf
 
 Añadimos al final del archivo:
 
-``` "/srv/samba/compartido" "0775"
-[Compartido] <-- Asignar un nombre a la sección
-   comment = Carpeta Compartida
-   path = /srv/samba/compartido
+``` "/srv/samba/publica" "0775"
+[Publica] <-- Asignar un nombre a la sección
+   comment = Carpeta pública
+   path = /srv/samba/publica
+   public = yes
    browsable = yes
    read only = no
    writable = yes
@@ -78,7 +79,7 @@ Añadimos al final del archivo:
 ```
 Dónde:
 
-- **[Compartido]**. Nombre de la sección.
+- **[Publica]**. Nombre de la sección.
 - **comment**. Descripción del contenido de la carpeta.
 - **path**. Ruta absoluta del directorio que vamos a compartir.
 - **browsable**. Para poder navegar entre las subcarpetas.
@@ -213,5 +214,5 @@ O revisar los logs en:
 /var/log/samba/
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTkxMDUzNTgwOV19
+eyJoaXN0b3J5IjpbMTc0NjE3MzE0OSwtOTEwNTM1ODA5XX0=
 -->
