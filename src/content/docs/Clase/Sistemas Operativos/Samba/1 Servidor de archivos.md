@@ -1,7 +1,7 @@
 ---
 title: Servidor de archivos. Samba
 id: d789c205ac
-lastUpdated: 2025-03-10T19:46:59.000Z
+lastUpdated: 2025-03-10T19:48:32.000Z
 ---
 
 ## 1. Instalar el servidor Samba.
@@ -74,7 +74,7 @@ Añadimos al final del archivo:
    browsable = yes
    writable = yes
    printable = no
-   guest only = yes
+   guest ok = yes
    create mask = 0775
    directory mask = 0775
 
@@ -82,17 +82,17 @@ Añadimos al final del archivo:
 	path = /srv/samba/privada
 	browsable = yes
 	writeable = yes
-	guest ok = yes
+	guest ok = no
 	create mask = 0777
 	directory mask = 0777
-	force user = 
+	force user = nobody
 ```
 Dónde:
 
 - **[Publica]**. Nombre de la sección.
 - **comment**. Descripción del contenido de la carpeta.
 - **path**. Ruta absoluta del directorio que vamos a compartir.
-- **browsable**. Para poder navegar entre las subcarpetas.
+- **browsable**. El recurso será o no accesible visualmente.
 - **read only**. Para poder leer y escribir en dicha carpeta.
 - **writable**. Permite que los usuarios tengan permisos de escritura en el recurso compartido, pudiendo así modificar los archivos.
 - **create mask**. Permisos que van a tener dichos archivos. 
@@ -224,5 +224,5 @@ O revisar los logs en:
 /var/log/samba/
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTk2NjAxMjk1MiwtOTEwNTM1ODA5XX0=
+eyJoaXN0b3J5IjpbLTE5MzcwMDczNTksLTkxMDUzNTgwOV19
 -->
