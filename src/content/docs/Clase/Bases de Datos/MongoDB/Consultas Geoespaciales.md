@@ -1,10 +1,10 @@
 ---
 updatedDate: '23/02/2025 21:01'
-title: 1 Consultas Geoespaciales
+title: Consultas Geoespaciales
 pubDate: '17/02/2025 17:47'
 heroImage: /images/blog/Clase/MongoDB/images/default/bg-2.jpg
 id: 7cc04fbf62
-lastUpdated: 2025-03-10T16:47:02.000Z
+lastUpdated: 2025-03-10T17:03:21.000Z
 ---
 # Consultas Geoespaciales en MongoDB
 
@@ -187,5 +187,5 @@ Para optimizar el rendimiento:
 -   **Limitar la cantidad de resultados** devueltos (`.limit(n)`).
 -   **Indexar adecuadamente** las propiedades de consulta frecuentes.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjYyNDM5ODkwLDgyOTQyODQ1NV19
+eyJoaXN0b3J5IjpbLTY0NjQ5NDI2OSw4Mjk0Mjg0NTVdfQ==
 -->
