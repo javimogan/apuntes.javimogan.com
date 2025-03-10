@@ -1,7 +1,7 @@
 ---
 title: Servidor de archivos. Samba
 id: d789c205ac
-lastUpdated: 2025-03-10T19:50:06.000Z
+lastUpdated: 2025-03-10T19:51:58.000Z
 ---
 
 ## 1. Instalar el servidor Samba.
@@ -104,6 +104,15 @@ Para verificar la configuración se debe utilizar el siguiente comando
 
 ```bash
 testparm
+```
+
+Con el fin de hacer que la carpeta compartida sea detectable en la red, debemos añadir la siguiente configuraación bajo la sección **[Global]**
+
+``` "global" ins="2-4"
+[global]
+	local master = yes
+	preferred master = yes
+	os level = 255
 ```
 
 ### 1.5. Añadir usuarios para acceder a los usuarios
@@ -232,5 +241,5 @@ O revisar los logs en:
 /var/log/samba/
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU5NTg2Mjk3MiwtOTEwNTM1ODA5XX0=
+eyJoaXN0b3J5IjpbLTU3MzY2MzE5OSwtOTEwNTM1ODA5XX0=
 -->
