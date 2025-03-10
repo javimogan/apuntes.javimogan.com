@@ -1,7 +1,7 @@
 ---
 title: Servidor de archivos. Samba
 id: d789c205ac
-lastUpdated: 2025-03-10T19:48:32.000Z
+lastUpdated: 2025-03-10T19:50:06.000Z
 ---
 
 ## 1. Instalar el servidor Samba.
@@ -78,6 +78,7 @@ Añadimos al final del archivo:
    create mask = 0775
    directory mask = 0775
 
+# También podemos configurar una carpeta de forma privada
 [Privada]
 	path = /srv/samba/privada
 	browsable = yes
@@ -97,6 +98,13 @@ Dónde:
 - **writable**. Permite que los usuarios tengan permisos de escritura en el recurso compartido, pudiendo así modificar los archivos.
 - **create mask**. Permisos que van a tener dichos archivos. 
 - **directory mask**. Permisos que van a tener dichas carpetas.
+- **force user**. Fuerza que todos los archivos y carpetas creados en este recurso compartido pertenezcan al usuario nobody.
+
+Para verificar la configuración se debe utilizar el siguiente comando
+
+```bash
+testparm
+```
 
 ### 1.5. Añadir usuarios para acceder a los usuarios
 Cada usuario de Samba, necesita una cuenta en el servidor. Es muy importante registrar a los usuarios en la base de datos Samba, y aque, en caso contrario, no podrán acceder a los recursos compartidos con contraseña. Para ello, se emplea el comando:
@@ -224,5 +232,5 @@ O revisar los logs en:
 /var/log/samba/
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5MzcwMDczNTksLTkxMDUzNTgwOV19
+eyJoaXN0b3J5IjpbLTU5NTg2Mjk3MiwtOTEwNTM1ODA5XX0=
 -->
