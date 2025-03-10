@@ -4,7 +4,7 @@ title: 1 Consultas Geoespaciales
 pubDate: '17/02/2025 17:47'
 heroImage: /images/blog/Clase/MongoDB/images/default/bg-2.jpg
 id: 7cc04fbf62
-lastUpdated: 2025-03-10T16:35:09.000Z
+lastUpdated: 2025-03-10T16:47:02.000Z
 ---
 # Consultas Geoespaciales en MongoDB
 
@@ -186,13 +186,6 @@ Para optimizar el rendimiento:
 -   **Filtrar los datos** antes de aplicar cálculos geoespaciales.
 -   **Limitar la cantidad de resultados** devueltos (`.limit(n)`).
 -   **Indexar adecuadamente** las propiedades de consulta frecuentes.
-
-## 7. Mejores Prácticas
-
--   **Almacenar coordenadas en el formato correcto** (`[longitud, latitud]`).
--   **Utilizar índices `2dsphere`** para cálculos esféricos realistas.
--   **Aplicar `$maxDistance` en consultas `$near`** para evitar escaneo de datos innecesario.
--   **Optimizar agregaciones** usando `$geoNear` solo cuando sea necesario.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODI5NDI4NDU1XX0=
+eyJoaXN0b3J5IjpbMjYyNDM5ODkwLDgyOTQyODQ1NV19
 -->
