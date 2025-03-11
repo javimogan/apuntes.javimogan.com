@@ -34,7 +34,7 @@ function filterSidebar(
                 // Get content of the link
                 const _file = files.find((f)=> `/${f.id}/` === entry.href)
                 if(_file && _file.data.lastUpdated && typeof _file.data.lastUpdated !== 'boolean'){
-                    if (moment(_file.data.lastUpdated).isAfter(moment().subtract(1, 'week'))){
+                    if (moment(_file.data.lastUpdated).isAfter(moment().subtract(2, 'day'))){
                         entry.badge = {text: "Nuevo",variant:'caution'};
                     }
                 }

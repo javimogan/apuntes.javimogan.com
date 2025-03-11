@@ -1,7 +1,7 @@
 ---
 title: Servidor de archivos. Samba
 id: d789c205ac
-lastUpdated: 2025-03-10T19:51:58.000Z
+lastUpdated: 2025-03-10T19:59:52.000Z
 ---
 
 ## 1. Instalar el servidor Samba.
@@ -66,7 +66,7 @@ sudo nano /etc/samba/smb.conf
 
 Añadimos al final del archivo:
 
-``` "/srv/samba/publica" "0775"
+```conf "/srv/samba/publica" "0775"
 [Publica] <-- Asignar un nombre a la sección
    comment = Carpeta pública
    path = /srv/samba/publica
@@ -108,7 +108,7 @@ testparm
 
 Con el fin de hacer que la carpeta compartida sea detectable en la red, debemos añadir la siguiente configuraación bajo la sección **[Global]**
 
-``` "global" ins="2-4"
+```conf ins={2-4}
 [global]
 	local master = yes
 	preferred master = yes
@@ -241,5 +241,6 @@ O revisar los logs en:
 /var/log/samba/
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU3MzY2MzE5OSwtOTEwNTM1ODA5XX0=
+eyJoaXN0b3J5IjpbLTEzMzQzODI4NjIsLTU3MzY2MzE5OSwtOT
+EwNTM1ODA5XX0=
 -->
