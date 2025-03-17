@@ -1,7 +1,7 @@
 ---
 title: Servidor de archivos. Samba
 id: d789c205ac
-lastUpdated: 2025-03-12T17:43:28.000Z
+lastUpdated: 2025-03-17T18:03:59.000Z
 ---
 
 ## 1. Instalar el servidor Samba.
@@ -75,8 +75,8 @@ Añadimos al final del archivo:
    writable = yes
    printable = no
    guest ok = yes
-   create mask = 0775
-   directory mask = 0775
+   create mask = 0777
+   directory mask = 0777
 
 # También podemos configurar una carpeta de forma privada
 [Privada]
@@ -105,7 +105,9 @@ Para verificar la configuración se debe utilizar el siguiente comando
 testparm
 ```
 
-Con el fin de hacer que la carpeta compartida sea detectable en la red, debemos añadir la siguiente configuraación bajo la sección **[Global]**
+El **Master Browser** (o **Explorador Maestro**) es un rol dentro de una red local (LAN) en sistemas Windows y Samba que se encarga de **mantener y distribuir la lista de equipos y recursos compartidos**. Básicamente, es el encargado de gestionar la navegación de la red para que los equipos puedan ver qué otros dispositivos están disponibles.
+
+Con el fin de hacer que la carpeta compartida sea detectable en la red, debemos añadir la siguiente configuración bajo la sección **[Global]**
 
 ```conf ins={2-4}
 [global]
@@ -114,6 +116,11 @@ Con el fin de hacer que la carpeta compartida sea detectable en la red, debemos 
 	os level = 255
 ```
 
+Dónde:
+
+- ```local master```. Indica que este servidor Samba puede participar en la elección de **Master Browser** en la red.
+- ```preferred master```. Hace que Samba **intente forzar una elección de Master Browser** cuando se inicia.
+- ```os level```. Define la prioridad de Samba en la elección del Master Browser. 1. **255 es el valor más alto posible**, lo que significa que **siempre** ganará la elección, excepto si hay otro servidor Samba con el mismo nivel.
 ### 1.5. Añadir usuarios para acceder a los usuarios
 Cada usuario de Samba, necesita una cuenta en el servidor. Es muy importante registrar a los usuarios en la base de datos Samba, y aque, en caso contrario, no podrán acceder a los recursos compartidos con contraseña. Para ello, se emplea el comando:
 
