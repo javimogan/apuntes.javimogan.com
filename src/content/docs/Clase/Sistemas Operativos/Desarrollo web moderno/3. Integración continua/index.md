@@ -1,7 +1,7 @@
 ---
-title: Integración continua. GitHub Actions y Google Firebase
+title: 3. Integración continua. GitHub Actions y Google Firebase
 id: 400409d4f6
-lastUpdated: 2025-03-17T19:10:00.000Z
+lastUpdated: 2025-03-17T19:16:26.000Z
 pagefind: false
 ---
 

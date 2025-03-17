@@ -1,7 +1,7 @@
 ---
-title: Control de versiones con Git
+title: 2. Control de versiones con Git
 id: 8160a453d7
-lastUpdated: 2025-03-17T19:08:45.000Z
+lastUpdated: 2025-03-17T19:16:26.000Z
 pagefind: false
 ---
 El control de versiones es una parte fundamental del desarrollo de software. Nos permite gestionar los cambios en el código, colaborar con otros desarrolladores y mantener un historial de modificaciones. En esta sección aprenderemos desde cero qué es **Git**, cómo instalarlo y cómo utilizar **GitHub** para gestionar nuestros proyectos.
