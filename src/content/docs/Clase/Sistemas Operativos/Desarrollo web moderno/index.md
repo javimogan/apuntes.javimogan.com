@@ -1,16 +1,15 @@
 ---
+title: Introducción al desarrollo web moderno
 id: 352c1a45d3
-lastUpdated: 2025-03-17T18:52:41.000Z
-title: index
+lastUpdated: 2025-03-17T18:55:29.000Z
 pagefind: false
 ---
-## Introducción al desarrollo web
 
 En este proyecto, aprenderemos desde cero cómo crear, gestionar y desplegar una aplicación web moderna utilizando tecnologías actuales como React, TypeScript, TailwindCSS, llevaremos un control de versiones mediante Git y se realizará una integración y despliegue continuo mediante el uso de GitHub Actions. Además desplegaremos gratuitamente nuestra web en Google Firebase.
 
 El proyecto se dividirá en tres fases principales:
 
-### 1. Desarrollo Web
+## 1. Desarrollo Web
 
 En esta primera parte, aprenderemos los fundamentos del desarrollo web y construiremos nuestra primera página web utilizando **React.js** y **TailwindCSS**. Empezaremos desde lo más básico:
 
@@ -19,7 +18,7 @@ En esta primera parte, aprenderemos los fundamentos del desarrollo web y constru
 - Creación de nuestro primer proyecto en React con TypeScript.
 - Integración de **TailwindCSS** y diseño de una página web sencilla.
 
-### 2. Control de versiones con Git
+## 2. Control de versiones con Git
 
 El control de versiones es fundamental en cualquier proyecto de software. En esta fase, aprenderemos desde cero qué es **Git** y cómo utilizarlo para gestionar nuestros cambios de código de manera eficiente. Veremos:
 
@@ -27,7 +26,7 @@ El control de versiones es fundamental en cualquier proyecto de software. En est
 - Configuración y primeros pasos con Git.
 - Trabajar con repositorios en **GitHub**.
 
-### 3. Despliegue e Integración Continua
+## 3. Despliegue e Integración Continua
 
 Finalmente, aprenderemos cómo hacer que nuestra aplicación sea accesible en Internet mediante el despliegue en **Firebase**. Además, introduciremos conceptos de **Integración y Despliegue Continuo (CI/CD)** utilizando **GitHub Actions**. En esta fase abordaremos:
 

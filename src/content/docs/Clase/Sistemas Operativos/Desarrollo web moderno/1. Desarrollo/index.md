@@ -1,9 +1,10 @@
 ---
+title: 1. Desarrollo
 id: a01e16bc6a
-lastUpdated: 2025-03-17T18:52:41.000Z
-title: index
+lastUpdated: 2025-03-17T18:55:29.000Z
 pagefind: false
 ---
+
 En esta primera parte, aprenderemos los fundamentos del desarrollo web y construiremos nuestra primera página web utilizando **React.js** y **TailwindCSS**. Empezaremos desde lo más básico:
 
 ## 1.1 Instalación de Node.js y configuración del entorno
