@@ -1,7 +1,7 @@
 ---
 title: Integración continua. GitHub Actions y Google Firebase
 id: 400409d4f6
-lastUpdated: 2025-03-17T19:08:45.000Z
+lastUpdated: 2025-03-17T19:10:00.000Z
 pagefind: false
 ---
 
@@ -27,7 +27,7 @@ Un **workflow** en GitHub Actions consta de:
 
 Vamos a configurar un **workflow** en GitHub Actions para que, cada vez que haya cambios en la rama `main`, se despliegue automáticamente en **Firebase Hosting**.
 
-### **1. Configurar Firebase en el Proyecto**
+### **Configurar Firebase en el Proyecto**
 
 1. Instalar la CLI de Firebase:
     
@@ -56,7 +56,7 @@ Vamos a configurar un **workflow** en GitHub Actions para que, cada vez que haya
     firebase deploy
     ```
 
-### **2. Crear un Archivo de Workflow en GitHub Actions**
+### **Crear un Archivo de Workflow en GitHub Actions**
 
 Dentro de tu repositorio de GitHub, crea la carpeta `.github/workflows/` y dentro un archivo `deploy.yml` con el siguiente contenido:
 
@@ -95,7 +95,7 @@ jobs:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
 ```
 
-### **3. Configurar el Token de Firebase en GitHub**
+### **Configurar el Token de Firebase en GitHub**
 
 Para que GitHub pueda acceder a Firebase, debemos generar un token de autenticación:
 
