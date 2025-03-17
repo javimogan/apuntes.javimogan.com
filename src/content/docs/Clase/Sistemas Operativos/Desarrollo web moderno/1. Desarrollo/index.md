@@ -1,7 +1,7 @@
 ---
 title: 1. Desarrollo
 id: a01e16bc6a
-lastUpdated: 2025-03-17T19:00:36.000Z
+lastUpdated: 2025-03-17T19:08:45.000Z
 pagefind: false
 ---
 
@@ -113,7 +113,5 @@ const App: React.FC = () => {
 
 export default App;
 ```
-
-Con esto, al recargar el navegador, veremos un mensaje estilizado con TailwindCSS en nuestra aplicación.
 
 Con esta base, ya hemos configurado nuestro entorno de desarrollo y hemos construido nuestra primera página web con React, TypeScript y TailwindCSS. En la siguiente fase, aprenderemos sobre **Git y control de versiones** para gestionar nuestro código de manera eficiente.
