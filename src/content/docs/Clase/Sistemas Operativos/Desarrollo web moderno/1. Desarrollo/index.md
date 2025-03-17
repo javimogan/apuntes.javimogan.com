@@ -1,7 +1,7 @@
 ---
 title: 1. Desarrollo
 id: a01e16bc6a
-lastUpdated: 2025-03-17T18:55:29.000Z
+lastUpdated: 2025-03-17T19:00:36.000Z
 pagefind: false
 ---
 
@@ -14,23 +14,16 @@ Antes de empezar con React, necesitamos instalar **Node.js**, que es un entorno 
 ### Instalación de Node.js
 
 1. Ve al sitio oficial de [Node.js](https://nodejs.org/) y descarga la versión estable (LTS).
-    
 2. Instala el archivo descargado siguiendo las instrucciones del instalador.
-    
 3. Para verificar que la instalación fue correcta, abre una terminal y ejecuta:
-    
     ```sh
     node -v
     ```
-    
-    Esto mostrará la versión de Node instalada.
-    
+	Esto mostrará la versión de Node instalada.
 4. También verifica la instalación de npm con:
-    
     ```sh
     npm -v
     ```
-    
 
 ## 1.2 Introducción a React.js y TypeScript
 

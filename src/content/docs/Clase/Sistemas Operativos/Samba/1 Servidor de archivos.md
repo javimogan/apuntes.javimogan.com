@@ -1,7 +1,7 @@
 ---
 title: Servidor de archivos. Samba
 id: d789c205ac
-lastUpdated: 2025-03-17T18:03:59.000Z
+lastUpdated: 2025-03-17T19:00:36.000Z
 ---
 
 ## 1. Instalar el servidor Samba.
@@ -133,14 +133,14 @@ smbpasswd -a usuario_samba
 Es frecuente, que la mayoría de las cuentas de usuario que se utilizan para acceder hacia recursos compartidos en Samba no requieran acceso con el comando **passwd** y se deberá definir ``/sbin/nologin`` como intérprete de comandos para la cuenta de usuario en cuestión.
 
 ```bash
-adduser -s /sbin/nologin usuario_samba
+adduser --shell /sbin/nologin usuario_samba
 smbpasswd -a usuario_samba
 ```
 
 Si, por el contrario, sí se necesitase que las cuentas puedan acceder a otros servicios (como por ejemplo SSH), es decir, permitir acceso al intérprete de comandos, será necesario especificar ``/bin/bash`` como intérprete de comandos y, además, se deberá asignar una clave de acceso en el sistema mediante el comando **passwd**.
 
 ```bash
-adduser -s /bin/bash usuario_samba
+adduser --shell /bin/bash usuario_samba
 passwd usuario_samba
 smbpasswd -a usuario_samba
 ```
