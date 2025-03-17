@@ -1,9 +1,9 @@
 ---
 id: 8d5656accc
-lastUpdated: 2025-03-13T17:13:37.000Z
+lastUpdated: 2025-03-17T16:32:18.000Z
 title: Lecturas precisas
 ---
-# Lectura de temperatura y humedad con DHT11 en Arduino
+## Lectura de temperatura y humedad con DHT11 en Arduino
 
 Este código permite leer la temperatura y humedad del sensor DHT11 y calcular la media de las últimas 100 mediciones para obtener valores más estables.
 
