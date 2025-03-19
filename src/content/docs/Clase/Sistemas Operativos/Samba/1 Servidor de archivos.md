@@ -1,7 +1,7 @@
 ---
 title: Servidor de archivos. Samba
 id: d789c205ac
-lastUpdated: 2025-03-19T16:19:28.000Z
+lastUpdated: 2025-03-19T16:23:23.000Z
 ---
 
 ## 1. Instalar el servidor Samba.
@@ -90,7 +90,7 @@ Dónde:
 
 También se puede compartir una **carpeta privada**, en la cual es imprescindible el acceso con un nombre de usuario y una contraseña, la sección que se ha de añadir al fichero **smb.conf** sería:
 
-```conf "" "/srv/samba/privada" "0700"
+```conf "/srv/samba/privada" "0700"
 
 [Privada]
 	path = /srv/samba/privada
