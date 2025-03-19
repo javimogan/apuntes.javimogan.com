@@ -1,7 +1,7 @@
 ---
 title: Servidor de archivos. Samba
 id: d789c205ac
-lastUpdated: 2025-03-19T16:09:18.000Z
+lastUpdated: 2025-03-19T16:19:28.000Z
 ---
 
 ## 1. Instalar el servidor Samba.
@@ -58,7 +58,7 @@ Las principales secciones son:
 - **[homes]** define las carpetas ``/home``de los usuarios como los recursos compartidos.
 - **[printer]** define las impresoras compartidas.
 
-Por ejemplo, para compartir una **carpeta privada**, en la cual es imprescindible el acceso con un nombre de usuario y una contraseña, la sección que se ha de añadir al fichero **smb.conf** sería:
+Por ejemplo, para compartir una **carpeta pública**, a la que cualquier usuario podría acceder sin necesidad de iniciar sesión, sería:
 
 ```bash
 sudo nano /etc/samba/smb.conf
@@ -66,7 +66,7 @@ sudo nano /etc/samba/smb.conf
 
 Añadimos al final del archivo:
 
-```conf "/srv/samba/publica" "0775"
+```conf "/srv/samba/publica" "0777"
 [Publica] <-- Asignar un nombre a la sección
    comment = Carpeta pública
    path = /srv/samba/publica
@@ -75,17 +75,6 @@ Añadimos al final del archivo:
    writeable = yes
    printable = no
    guest ok = yes
-   create mask = 077
-   directory mask = 077
-
-# También podemos configurar una carpeta de forma privada
-[Privada]
-	path = /srv/samba/privada
-	browsable = yes
-	writeable = yes
-	create mask = 0700
-	directory mask = 0700
-	valid users = usuario_samba
 ```
 Dónde:
 
@@ -98,6 +87,19 @@ Dónde:
 - **create mask**. Permisos que van a tener dichos archivos. 
 - **directory mask**. Permisos que van a tener dichas carpetas.
 - **force user**. Fuerza que todos los archivos y carpetas creados en este recurso compartido pertenezcan al usuario nobody.
+
+También se puede compartir una **carpeta privada**, en la cual es imprescindible el acceso con un nombre de usuario y una contraseña, la sección que se ha de añadir al fichero **smb.conf** sería:
+
+```conf "" "/srv/samba/privada" "0700"
+
+[Privada]
+	path = /srv/samba/privada
+	browsable = yes
+	writeable = yes
+	create mask = 0700
+	directory mask = 0700
+	valid users = usuario_samba
+```
 
 Para verificar la configuración se debe utilizar el siguiente comando
 
