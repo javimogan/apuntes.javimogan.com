@@ -1,7 +1,7 @@
 ---
 title: Servidor de archivos. Samba
 id: d789c205ac
-lastUpdated: 2025-03-17T19:00:36.000Z
+lastUpdated: 2025-03-19T16:07:06.000Z
 ---
 
 ## 1. Instalar el servidor Samba.
@@ -72,7 +72,7 @@ Añadimos al final del archivo:
    path = /srv/samba/publica
    public = yes
    browsable = yes
-   writable = yes
+   writeable = yes
    printable = no
    guest ok = yes
    create mask = 0777
