@@ -1,7 +1,7 @@
 ---
 title: 1. Desarrollo
 id: a01e16bc6a
-lastUpdated: 2025-03-17T19:08:45.000Z
+lastUpdated: 2025-03-22T11:11:33.000Z
 pagefind: false
 ---
 
@@ -38,19 +38,20 @@ Para crear un proyecto en React con TypeScript, seguimos estos pasos:
 1. Abre una terminal y ejecuta el siguiente comando para crear un nuevo proyecto:
     
     ```sh
-    npx create-react-app mi-proyecto --template typescript
+    npx create-react-router@latest my-react-router-app
     ```
     
 2. Ingresa a la carpeta del proyecto:
     
     ```sh
-    cd mi-proyecto
+    cd my-react-router-app
     ```
     
 3. Inicia el servidor de desarrollo:
     
     ```sh
-    npm start
+    npm i
+    npm run dev
     ```
     
     Esto abrirá una nueva pestaña en el navegador con la aplicación React en ejecución.
