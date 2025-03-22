@@ -1,7 +1,7 @@
 ---
 title: 1. Desarrollo
 id: a01e16bc6a
-lastUpdated: 2025-03-22T11:11:33.000Z
+lastUpdated: 2025-03-22T11:16:19.000Z
 pagefind: false
 ---
 
@@ -65,33 +65,29 @@ Para instalar TailwindCSS en nuestro proyecto, seguimos estos pasos:
 1. Instalar Tailwind y sus dependencias:
     
     ```sh
-    npm install -D tailwindcss postcss autoprefixer
+	npm install tailwindcss @tailwindcss/vite
     ```
     
-2. Inicializar Tailwind en el proyecto:
+2. Añadir el plugin ``@tailwindcss/vite`` en el fichero de configuración de Vite ``vite.config.ts``.
     
-    ```sh
-    npx tailwindcss init -p
+    ```typescript ins={7}
+    import { reactRouter } from "@react-router/dev/vite";
+	import { defineConfig } from "vite";
+	import tsconfigPaths from "vite-tsconfig-paths";
+	import tailwindcss from "@tailwindcss/vite";
+	export default defineConfig({
+	plugins: [
+		tailwindcss(),
+		reactRouter(),
+		tsconfigPaths(),
+	],
+	});
     ```
     
-3. Configurar Tailwind en el archivo `tailwind.config.js`:
-    
-    ```js
-    module.exports = {
-      content: ["./src/**/*.{js,jsx,ts,tsx}"],
-      theme: {
-        extend: {},
-      },
-      plugins: [],
-    };
-    ```
-    
-4. Agregar Tailwind a los estilos globales en `src/index.css`:
+3. Agregar Tailwind a los estilos globales en `./app/app.css`:
     
     ```css
-    @tailwind base;
-    @tailwind components;
-    @tailwind utilities;
+    @import "tailwindcss";
     ```
     
 
@@ -104,15 +100,17 @@ Con la configuración lista, crearemos una página sencilla con React y Tailwind
 ```tsx
 import React from 'react';
 
-const App: React.FC = () => {
-  return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <h1 className="text-4xl font-bold text-blue-500">¡Hola, mundo en React con TailwindCSS!</h1>
-    </div>
-  );
-};
-
-export default App;
+export default function Home() {
+	return (
+	
+		<h1 className="text-3xl font-bold underline">
+		
+		Hello world!
+		
+		</h1>
+	
+	)
+}
 ```
 
 Con esta base, ya hemos configurado nuestro entorno de desarrollo y hemos construido nuestra primera página web con React, TypeScript y TailwindCSS. En la siguiente fase, aprenderemos sobre **Git y control de versiones** para gestionar nuestro código de manera eficiente.
