@@ -1,7 +1,7 @@
 ---
 title: 2. Control de versiones con Git
 id: 8160a453d7
-lastUpdated: 2025-03-17T19:16:26.000Z
+lastUpdated: 2025-04-01T10:48:06.000Z
 pagefind: false
 ---
 El control de versiones es una parte fundamental del desarrollo de software. Nos permite gestionar los cambios en el código, colaborar con otros desarrolladores y mantener un historial de modificaciones. En esta sección aprenderemos desde cero qué es **Git**, cómo instalarlo y cómo utilizar **GitHub** para gestionar nuestros proyectos.
@@ -15,144 +15,300 @@ El control de versiones es una parte fundamental del desarrollo de software. Nos
 - Trabajar en paralelo con otros desarrolladores sin conflictos.
 - Guardar nuestro código en repositorios remotos como **GitHub**.
 
-## 2.2 Instalación de Git
+## 2.2 ¿Qué es GitHub?
 
-Para comenzar a usar Git, primero debemos instalarlo en nuestro sistema.
+**GitHub** es una plataforma que permite alojar repositorios de Git en la nube. Con GitHub puedes:
 
-
-### Linux (Ubuntu/Debian)
-
-1. Ejecuta en la terminal:
-    
-    ```sh
-    sudo apt update
-    sudo apt install git
-    ```
-    
-2. Verifica la instalación con:
-    
-    ```sh
-    git --version
-    ```
-
-## 2.3 Configuración inicial de Git
-
-Después de instalar Git, debemos configurarlo con nuestro nombre y correo electrónico. Esto es necesario para registrar correctamente nuestras contribuciones.
+- Guardar tu código en la nube.
+- Compartir tus proyectos.
+- Colaborar con otras personas.
+- Acceder a herramientas como seguimiento de errores, páginas web, documentación, etc.
+## 2.3 Instalación de Git
 
 ```sh
- git config --global user.name "Tu Nombre"
- git config --global user.email "tuemail@example.com"
+
+sudo apt update
+
+sudo apt install git
+
 ```
 
-Para verificar la configuración:
+### En Windows
+
+1. Descarga el instalador desde: [https://git-scm.com](https://git-scm.com)
+2. Ejecuta el instalador y sigue los pasos.
+### 2.4 Verifica la instalación
 
 ```sh
- git config --list
+
+git --version
+
 ```
 
-## 2.4 Primeros pasos con Git
+
+## 2.5 Configuración inicial
+
+Después de instalar Git, necesitas configurarlo con tu nombre y correo. Esto se usa para identificar quién hace los cambios.
+
+```sh
+
+git config --global user.name "Tu Nombre"
+
+git config --global user.email "tu@email.com"
+
+```
+
+Puedes comprobar la configuración con:
+
+```sh
+
+git config --list
+
+```
+
+## 2.6 Comandos básicos de Git
 
 ### Crear un nuevo repositorio
 
-Para comenzar a usar Git en nuestro proyecto, debemos inicializar un repositorio dentro de la carpeta del proyecto:
-
 ```sh
-cd mi-proyecto
- git init
+
+git init
+
 ```
 
-Este comando creará una carpeta oculta `.git`, que contiene toda la información del control de versiones.
+Esto crea un repositorio vacío en tu carpeta actual (con una carpeta `.git` oculta).
 
-### Añadir archivos al repositorio
-
-Para agregar archivos al control de versiones, usamos:
+### Añadir archivos al área de preparación
 
 ```sh
- git add .
+
+git add archivo.txt # Añade un archivo
+
+git add . # Añade todos los archivos modificados
+
 ```
 
-Esto añade todos los archivos nuevos o modificados al área de preparación.
-
-### Guardar cambios en Git
-
-Para guardar los cambios en el historial de Git, realizamos un **commit**:
+### Guardar los cambios (commit)
 
 ```sh
- git commit -m "Primer commit"
+
+git commit -m "Descripción del cambio"
+
 ```
 
-Cada commit guarda un punto en la historia del proyecto al que podemos volver en el futuro.
+### Ver el estado del repositorio
 
-## 2.5 Uso de GitHub
+```sh
 
-### Crear una cuenta en GitHub
+git status
 
-Para subir nuestro código a un repositorio remoto, primero necesitamos una cuenta en [GitHub](https://github.com/).
+```
 
+### Ver historial de cambios
+
+```sh
+
+git log
+
+```
+
+
+## 2.7 Subir un proyecto a GitHub
 ### Crear un repositorio en GitHub
 
-1. Inicia sesión en GitHub.
-2. Haz clic en **New Repository**.
-3. Asigna un nombre al repositorio y selecciona si será público o privado.
-4. Copia la URL del repositorio remoto.
+1. Ve a [https://github.com](https://github.com)
 
-### Subir nuestro proyecto a GitHub
+2. Inicia sesión o crea una cuenta.
 
-Una vez creado el repositorio en GitHub, debemos conectarlo con nuestro proyecto local:
+3. Haz clic en **New Repository**
 
-```sh
- git remote add origin https://github.com/tuusuario/tu-repositorio.git
- git branch -M main
- git push -u origin main
-```
+4. Ponle un nombre y haz clic en **Create repository**
 
-Esto enviará nuestro código al repositorio remoto en GitHub.
+### Enlazar tu repositorio local con GitHub
 
-## 2.6 Clonar un repositorio existente
+Git usa **remotos** para referirse a los servidores externos. El más común es `origin`, que representa el repositorio en GitHub.
 
-Si queremos descargar un proyecto desde GitHub, usamos:
+#### Crear un repositorio desde la línea de comandos
 
 ```sh
- git clone https://github.com/usuario/repositorio.git
+
+echo "# mi-proyecto" >> README.md
+
+git init
+
+git add README.md
+
+git commit -m "primer commit"
+
+git branch -M main
+
+git remote add origin https://github.com/tuusuario/mi-proyecto.git
+
+git push -u origin main
+
 ```
 
-Esto creará una copia local del repositorio en nuestro equipo.
-
-## 2.7 Ramas en Git
-
-Las **ramas** permiten trabajar en diferentes versiones del código sin afectar la rama principal.
-
-### Crear una nueva rama
+#### Subir un proyecto ya existente
 
 ```sh
- git branch nueva-rama
+
+git remote add origin https://github.com/tuusuario/mi-proyecto.git
+
+git branch -M main
+
+git push -u origin main
+
 ```
 
-### Cambiar a una rama
+
+## 2.8 ¿Qué es `origin`?
+
+`origin` es simplemente el **nombre que Git da por defecto al repositorio remoto**. Puedes tener varios remotos si lo necesitas, pero `origin` suele ser el principal.
+  
+Cuando haces:
 
 ```sh
- git checkout nueva-rama
+
+git push origin main
+
 ```
 
-### Fusionar una rama con la principal
+
+Estás diciendo: "sube mi rama `main` al repositorio remoto llamado `origin`".
+
+## 2.9 Clonar un repositorio desde GitHub
+
+Si quieres copiar un proyecto de GitHub a tu equipo:
+
+  
 
 ```sh
- git checkout main
- git merge nueva-rama
+
+git clone https://github.com/usuario/repositorio.git
+
 ```
 
-## 2.8 Resolución de conflictos
+Esto crea una copia local del repositorio.
 
-A veces, al fusionar ramas, pueden ocurrir conflictos. Git nos pedirá que editemos los archivos afectados y luego confirmemos los cambios:
+## 2.10 Trabajar con ramas
+
+Las ramas permiten desarrollar nuevas características sin afectar la versión principal del proyecto.
+
+### Crear una rama
 
 ```sh
- git add .
- git commit -m "Resolviendo conflictos"
+
+git branch nueva-rama
+
 ```
 
-## 2.9 Buenas prácticas en Git
+### Cambiar de rama
 
-- Realizar commits pequeños y descriptivos.
-- Usar ramas para cada nueva funcionalidad.
-- Mantener el repositorio actualizado con `git pull` antes de hacer cambios.
-- Escribir mensajes de commit claros y concisos.
+```sh
+
+git checkout nueva-rama
+
+```
+
+### Crear y cambiar en un solo paso
+
+```sh
+
+git checkout -b nueva-rama
+
+```
+
+### Fusionar una rama con `main`
+
+```sh
+
+git checkout main
+
+git merge nueva-rama
+
+```
+
+
+## 2.11 Actualizar desde GitHub (pull)
+
+```sh
+
+git pull origin main
+
+```
+
+
+Esto trae los últimos cambios desde GitHub y los aplica en tu copia local.
+
+## 2.12 Subir cambios a GitHub (push)
+
+```sh
+
+git push origin main
+
+```
+
+
+## 2.13 Ver los remotos configurados
+
+
+```sh
+
+git remote -v
+
+```
+
+  
+
+## 2.14 Eliminar un remoto
+
+```sh
+
+git remote remove origin
+
+```
+
+## 2.15 Buenas prácticas
+
+  
+
+- Usa `git status` frecuentemente.
+
+- Haz commits pequeños y descriptivos.
+
+- Usa ramas para nuevas funcionalidades o experimentos.
+
+- Sincroniza tu repositorio con `git pull` antes de empezar a trabajar.
+
+- No subas archivos generados o privados (usa `.gitignore`).
+
+
+## 2.16 Archivos útiles
+
+### `.gitignore`
+
+Este archivo permite decirle a Git qué archivos no debe seguir (por ejemplo, archivos temporales, configuraciones locales, etc).
+
+
+Ejemplo:
+
+  
+
+```
+
+*.log
+
+node_modules/
+
+.env
+
+.DS_Store
+
+```
+
+  
+## 2.17 Recursos adicionales
+
+- [Documentación oficial de Git](https://git-scm.com/doc)
+
+- [Guía de GitHub para principiantes](https://docs.github.com/es/get-started)
