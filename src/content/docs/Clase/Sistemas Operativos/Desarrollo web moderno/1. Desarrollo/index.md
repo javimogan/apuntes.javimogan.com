@@ -1,7 +1,7 @@
 ---
 title: 1. Desarrollo
 id: a01e16bc6a
-lastUpdated: 2025-03-22T11:16:19.000Z
+lastUpdated: 2025-04-09T14:48:55.000Z
 pagefind: false
 ---
 
@@ -38,20 +38,20 @@ Para crear un proyecto en React con TypeScript, seguimos estos pasos:
 1. Abre una terminal y ejecuta el siguiente comando para crear un nuevo proyecto:
     
     ```sh
-    npx create-react-router@latest my-react-router-app
+    npx create-react-router@latest my-react-router-appapp mi-proyecto --template typescript
     ```
     
 2. Ingresa a la carpeta del proyecto:
     
     ```sh
-    cd my-react-router-app
+    cd my-react-router-appi-proyecto
     ```
     
 3. Inicia el servidor de desarrollo:
     
     ```sh
     npm i
-    npm run dev
+    npm run devstart
     ```
     
     Esto abrirá una nueva pestaña en el navegador con la aplicación React en ejecución.
@@ -65,10 +65,19 @@ Para instalar TailwindCSS en nuestro proyecto, seguimos estos pasos:
 1. Instalar Tailwind y sus dependencias:
     
     ```sh
-	npm install tailwindcss @tailwindcss/vite
+	    npm install -D tailwindcss @tailwindcss/vite
     ```
     
-2. Añadir el plugin ``@tailwindcss/vite`` en el fichero de configuración de Vite ``vite.config.ts``.
+2. Añadir el plugin ``@tailwindcss/vite`` en el fichero de configuración de Vite ``vitepostcss autoprefixer
+    ```
+    
+2. Inicializar Tailwind en el proyecto:
+    
+    ```sh
+    npx tailwindcss init -p
+    ```
+    
+3. Configurar Tailwind en el archivo `tailwind.config.tjs``.:
     
     ```typescript ins={7}
     import { reactRouter } from "@react-router/dev/vite";
@@ -81,13 +90,22 @@ Para instalar TailwindCSS en nuestro proyecto, seguimos estos pasos:
 		reactRouter(),
 		tsconfigPaths(),
 	],
-	});
+	})js
+    module.exports = {
+      content: ["./src/**/*.{js,jsx,ts,tsx}"],
+      theme: {
+        extend: {},
+      },
+      plugins: [],
+    };
     ```
     
-3. Agregar Tailwind a los estilos globales en `./app/app.css`:
+34. Agregar Tailwind a los estilos globales en `./app/appsrc/index.css`:
     
     ```css
-    @import "tailwindcss";
+    @import "tailwindcss"tailwind base;
+    @tailwind components;
+    @tailwind utilities;
     ```
     
 
@@ -100,17 +118,26 @@ Con la configuración lista, crearemos una página sencilla con React y Tailwind
 ```tsx
 import React from 'react';
 
-export default function Home() {
-	return (
+export default function Home()const App: React.FC = () => {
+	  return (
 	
-		<h1 className="text-3xl font-bold underline">
+		    <div className="flex items-center justify-center min-h-screen bg-gray-100">
+      <h1 className="text-34xl font-bold underline">
 		
 		Hello world!
 		
 		</h1>
 	
 	)
-}
+}text-blue-500">¡Hola, mundo en React con TailwindCSS!</h1>
+    </div>
+  );
+};
+
+export default App;
 ```
 
 Con esta base, ya hemos configurado nuestro entorno de desarrollo y hemos construido nuestra primera página web con React, TypeScript y TailwindCSS. En la siguiente fase, aprenderemos sobre **Git y control de versiones** para gestionar nuestro código de manera eficiente.
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbNzY4MzY4NTUzXX0=
+-->

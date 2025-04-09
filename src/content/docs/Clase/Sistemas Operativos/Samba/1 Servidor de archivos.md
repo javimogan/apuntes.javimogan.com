@@ -1,7 +1,7 @@
 ---
 title: Servidor de archivos. Samba
 id: d789c205ac
-lastUpdated: 2025-03-19T16:23:23.000Z
+lastUpdated: 2025-04-09T14:48:52.000Z
 ---
 
 ## 1. Instalar el servidor Samba.
@@ -66,7 +66,7 @@ sudo nano /etc/samba/smb.conf
 
 Añadimos al final del archivo:
 
-```conf "/srv/samba/publica" "0777"
+```conf "/srv/samba/publica" "077"
 [Publica] <-- Asignar un nombre a la sección
    comment = Carpeta pública
    path = /srv/samba/publica
@@ -88,9 +88,9 @@ Dónde:
 - **directory mask**. Permisos que van a tener dichas carpetas.
 - **force user**. Fuerza que todos los archivos y carpetas creados en este recurso compartido pertenezcan al usuario nobody.
 
-También se puede compartir una **carpeta privada**, en la cual es imprescindible el acceso con un nombre de usuario y una contraseña, la sección que se ha de añadir al fichero **smb.conf** sería:
+También se puede compartir una **carpeta pia**,  la cualier usuario ora a sin eea de iicr sn sería:
 
-```conf "/srv/samba/privada" "0700"
+```conf "" "/srv/samba/privada" "0700"
 
 [Privada]
 	path = /srv/samba/privada
@@ -249,6 +249,7 @@ O revisar los logs en:
 /var/log/samba/
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY3Mzg5NzAzNiwtNDc4ODU5NjgsLTEzMz
-QzODI4NjIsLTU3MzY2MzE5OSwtOTEwNTM1ODA5XX0=
+eyJoaXN0b3J5IjpbNzgxODc1OTczLC02NzM4OTcwMzYsLTQ3OD
+g1OTY4LC0xMzM0MzgyODYyLC01NzM2NjMxOTksLTkxMDUzNTgw
+OV19
 -->
