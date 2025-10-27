@@ -1,7 +1,7 @@
 ---
 title: 3. Integración continua. GitHub Actions y Google Firebase
 id: 400409d4f6
-lastUpdated: 2025-04-25T17:47:19.000Z
+lastUpdated: 2025-10-27T12:02:43.000Z
 pagefind: false
 ---
 
@@ -31,21 +31,22 @@ Vamos a configurar un **workflow** en GitHub Actions para que, cada vez que haya
 
 1. Instalar la CLI de Firebase:
 
-```sh
+    
+    ```sh
     npm install -g firebase-tools
-```
+    ```
     
 2. Iniciar sesión en Firebase:
     
-```sh
+    ```sh
     firebase login
-```
+    ```
     
 3. Inicializar Firebase en el proyecto:
     
-```sh
+    ```sh
     firebase init hosting
-```
+    ```
     
     - Selecciona tu proyecto en Firebase.
     - Define la carpeta de tu app (ej. `build` para React).
@@ -53,9 +54,9 @@ Vamos a configurar un **workflow** en GitHub Actions para que, cada vez que haya
 
 4. Para probar el despliegue manualmente, ejecuta:
     
-```sh
+    ```sh
     firebase deploy
-```
+    ```
 
 ### **Crear un Archivo de Workflow en GitHub Actions**
 
@@ -135,3 +136,6 @@ firebase hosting:channel:list
 ```
 
 Tu sitio estará disponible en la URL proporcionada por Firebase Hosting.
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbNzk2NzcyOThdfQ==
+-->
