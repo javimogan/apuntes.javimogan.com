@@ -1,7 +1,42 @@
 ---
+id: 9b6d5755c9
+lastUpdated: 2025-10-27T12:05:34.000Z
+title: index.md
+---
+
+---
+
 title: Ejemplo docu
+
 id: 32423424dd
-lastUpdated: 2025-10-27T12:03:20.000Z
+
+lastUpdated: 2025-03-10T16:35:06.000Z
+
+  
+  
+
+import { Steps } from '@astrojs/starlight/components';
+
+import { Aside } from '@astrojs/starlight/components';
+
+import { Card } from '@astrojs/starlight/components';
+
+import { LinkCard } from '@astrojs/starlight/components';
+
+import { CardGrid } from '@astrojs/starlight/components';
+
+import { Badge } from '@astrojs/starlight/components';
+
+import { Code } from '@astrojs/starlight/components';
+
+import { FileTree } from '@astrojs/starlight/components';
+
+import { Icon } from '@astrojs/starlight/components';
+
+import { LinkButton } from '@astrojs/starlight/components';
+
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
 ---
 
   
@@ -280,5 +315,5 @@ import { Tabs, TabItem } from  '@astrojs/starlight/components';
 
 </Tabs>
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTE2OTkzMTc5XX0=
+eyJoaXN0b3J5IjpbODk2MDY5MDUsNTE2OTkzMTc5XX0=
 -->
